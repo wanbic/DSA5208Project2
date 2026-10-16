@@ -192,4 +192,179 @@ station map also showed meaningful differences between locations. These
 results suggest that year, month, hour, and station information are all useful
 when describing rainfall and when selecting features for the prediction task.
 
+\section{Task 2: Rainfall Probability Prediction}
+
+\subsection{Prediction target and temporal split}
+
+For each station and prediction time $t$, the model estimated the probability
+that rainfall in the next 30 minutes would exceed a given threshold. The target
+rainfall was the sum of the six readings from $t+5$ to $t+30$ minutes. We kept
+an example only when all required past and future readings were available at
+five-minute intervals. Predictions were made at the start and middle of each
+hour.
+
+We used seven thresholds: 0, 0.2, 0.5, 1, 2, 5, and 10~mm. Each station--time
+example produced seven labelled rows. The label was one when future rainfall
+was greater than the threshold, and zero otherwise.
+
+The data split followed time order. Data from 2017--2022 was used for training,
+2023 for validation and model choice, and 2024 for final testing. This avoids
+using future observations to train a model evaluated on earlier data. Samples
+were selected with a fixed hash of station and time, so each run was
+reproducible.
+
+\subsection{Features and candidate models}
+
+The features were station ID, current rainfall, rainfall over the previous 15
+and 30 minutes, month, hour, and the requested threshold. Station ID was
+one-hot encoded. Month and hour were converted to sine and cosine pairs to
+represent their cyclic patterns. These features describe recent rain as well
+as the time and location patterns found in Task 1.
+
+Logistic regression was the baseline. We also trained a gradient-boosted tree
+(GBT) model with 20 trees, depth 4, learning rate 0.1, subsampling rate 0.8,
+and seed 5208. Two GBT training sizes were tested with the same features and
+settings. Table~\ref{tab:task2-runs} shows the three runs. The fractions are
+relative to all eligible station--time examples before threshold expansion.
+All models used the same validation and test sets.
+
+\begin{table}[htbp]
+    \centering
+    \caption{Preliminary Task 2 model configurations.}
+    \label{tab:task2-runs}
+    \small
+    \begin{tabular}{@{}llllr@{}}
+        \toprule
+        Run & Model & Training fraction & Main settings & Training rows \\
+        \midrule
+        \texttt{logistic\_run\_20261015\_200027}
+            & Logistic & $1/4$ & 20 iterations & 9,490,075 \\
+        \texttt{gbt\_run\_20261016\_163426}
+            & GBT & $1/16$ & 20 trees, depth 4 & 2,377,011 \\
+        \texttt{gbt\_run\_20261015\_213401}
+            & GBT & $1/64$ & 20 trees, depth 4 & 593,733 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\subsection{Evaluation and preliminary comparison}
+
+We used PR--AUC, ROC--AUC, and Brier score. PR--AUC was the main metric because
+positive cases were rare. In the 2024 test set, the positive rate decreased
+from 6.33\% at 0~mm to 0.38\% at 10~mm. ROC--AUC measures ranking performance.
+Brier score measures probability error, so lower values are better. The Brier
+values in Table~\ref{tab:task2-performance} are the means across the seven
+thresholds.
+
+\begin{table}[htbp]
+    \centering
+    \caption{Overall discrimination and mean threshold-specific probability
+    error for the three preliminary models.}
+    \label{tab:task2-performance}
+    \small
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{@{}lrrrrrr@{}}
+        \toprule
+        Model & Validation PR--AUC & Validation ROC--AUC & Validation Brier
+              & Test PR--AUC & Test ROC--AUC & Test Brier \\
+        \midrule
+        Logistic ($1/4$) & 0.4903 & 0.8881 & 0.02251
+                         & 0.4790 & 0.8824 & 0.02133 \\
+        GBT ($1/16$)     & 0.6066 & 0.9146 & 0.01870
+                         & 0.5949 & 0.9094 & 0.01798 \\
+        GBT ($1/64$)     & 0.6038 & 0.9157 & 0.01874
+                         & 0.5926 & 0.9094 & 0.01799 \\
+        \bottomrule
+    \end{tabular}%
+    }
+\end{table}
+
+Figure~\ref{fig:task2-model-comparison} shows the validation results. Both GBT
+models clearly performed better than logistic regression at low and medium
+thresholds. Their PR--AUC and ROC--AUC values were higher, and their Brier
+scores were lower. At 5 and 10~mm, the difference was smaller and logistic
+regression had higher PR--AUC. This shows that rare, heavy-rain events remain
+difficult to predict. The two GBT curves were very close at almost every
+threshold.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{figures/task2_model_comparison.png}
+    \caption{PR--AUC, ROC--AUC, and Brier score by rainfall threshold on the
+    2023 validation set. Higher PR--AUC and ROC--AUC are better, whereas a
+    lower Brier score is better.}
+    \label{fig:task2-model-comparison}
+\end{figure}
+
+\subsection{Initial GBT choice}
+
+We selected \texttt{gbt\_run\_20261016\_163426}, which used $1/16$ of the
+eligible training examples. It had the highest validation PR--AUC (0.6066) and
+test PR--AUC (0.5949) of the three runs. It also kept the strong ROC--AUC and
+Brier scores of the smaller GBT.
+
+Increasing the GBT training data from $1/64$ to $1/16$ multiplied the number of
+rows by four, from 593,733 to 2,377,011. However, validation PR--AUC increased
+by only 0.0028, test PR--AUC by 0.0023, and mean Brier score decreased by only
+0.00003.
+The small changes suggest diminishing returns from adding more data. Training
+with more than $1/16$ would also produce much larger Spark shuffle files, while
+the local disk did not have enough free space for a larger GBT run. We therefore
+chose the $1/16$ model as the largest practical model with a small but measurable
+PR--AUC improvement.
+
+This is only the starting GBT model, not the final model. Later experiments
+will remove one feature group at a time, including station ID, recent rainfall,
+cyclic time features, and threshold. We will also test tree depth, number of
+trees, subsampling, training size, and methods for class imbalance at high
+thresholds.
+
+\subsection{Neighbor rainfall and final model}
+
+The next experiment added one spatial feature: the mean current rainfall at
+the three nearest monitoring stations. Nearest stations were found from their
+median coordinates using geographic distance. Only readings available at the
+prediction time were used, so this feature does not contain future information.
+The training data, random seed, and GBT settings were otherwise unchanged from
+the selected $1/16$ GBT. This makes the experiment a direct test of the new
+feature.
+
+Table~\ref{tab:neighbor-ablation} shows that neighbor rainfall improved all
+three metrics. Test PR--AUC increased from 0.5949 to 0.6281 and test ROC--AUC
+increased from 0.9094 to 0.9181. Mean test Brier score decreased from 0.01798
+to 0.01716. PR--AUC also increased at every individual threshold, as shown in
+Figure~\ref{fig:neighbor-ablation}. The neighbor feature had a GBT importance
+of 0.329, the highest importance of any single feature. This supports the Task
+1 finding that rainfall has a spatial pattern.
+
+The GBT with neighbor rainfall was therefore selected as the final model.
+Its tested defaults are 20 trees, depth 4, learning rate 0.1, subsampling
+rate 0.8, three neighbors, and the $1/16$ training sample. All can be changed
+through the command-line options in \texttt{task2.py}.
+
+\begin{table}[htbp]
+    \centering
+    \caption{Ablation results for the neighbor rainfall feature.}
+    \label{tab:neighbor-ablation}
+    \small
+    \begin{tabular}{@{}lrrrrrr@{}}
+        \toprule
+        Model & Val. PR & Val. ROC & Val. Brier
+              & Test PR & Test ROC & Test Brier \\
+        \midrule
+        GBT baseline & 0.6066 & 0.9146 & 0.01870
+                     & 0.5949 & 0.9094 & 0.01798 \\
+        GBT + neighbor rainfall & 0.6433 & 0.9240 & 0.01769
+                                & 0.6281 & 0.9181 & 0.01716 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{figures/final_model_comparison.png}
+    \caption{Test performance before and after adding neighbor rainfall.}
+    \label{fig:neighbor-ablation}
+\end{figure}
+
 \end{document}

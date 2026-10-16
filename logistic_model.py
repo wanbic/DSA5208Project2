@@ -25,7 +25,11 @@ NUMERIC_FEATURES = [
 ]
 
 
-def make_examples(rainfall, sample_modulus=SAMPLE_MODULUS):
+def make_examples(
+    rainfall,
+    sample_modulus=SAMPLE_MODULUS,
+    thresholds=THRESHOLDS,
+):
     """Create examples for predicting the next 30 minutes."""
 
     window = Window.partitionBy("station_id").orderBy("observation_time")
@@ -82,7 +86,7 @@ def make_examples(rainfall, sample_modulus=SAMPLE_MODULUS):
             F.col(time_column).cast("long") == current_time + offset * 300
         )
 
-    thresholds = F.array(*[F.lit(value) for value in THRESHOLDS])
+    threshold_values = F.array(*[F.lit(value) for value in thresholds])
     month_angle = (
         (F.month("observation_time") - F.lit(1))
         * F.lit(2.0 * math.pi / 12.0)
@@ -112,7 +116,7 @@ def make_examples(rainfall, sample_modulus=SAMPLE_MODULUS):
         .withColumn("month_cos", F.cos(month_angle))
         .withColumn("hour_sin", F.sin(hour_angle))
         .withColumn("hour_cos", F.cos(hour_angle))
-        .withColumn("threshold_mm", F.explode(thresholds))
+        .withColumn("threshold_mm", F.explode(threshold_values))
         .withColumn(
             "label",
             (F.col("future_rainfall_mm") > F.col("threshold_mm"))

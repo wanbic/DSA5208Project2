@@ -7,7 +7,12 @@ from pyspark.sql import functions as F
 from pyspark.sql.types import DoubleType, StringType, StructField, StructType
 
 
-def create_spark(local_directory=None):
+def create_spark(
+    local_directory=None,
+    master="local[4]",
+    driver_memory="4g",
+    shuffle_partitions=64,
+):
     """Create the Spark session used by the project."""
 
     local_path = None
@@ -21,11 +26,11 @@ def create_spark(local_directory=None):
     builder = (
         SparkSession.builder
         .appName("Singapore Rainfall Task 1")
-        .master("local[4]")
-        .config("spark.driver.memory", "4g")
+        .master(master)
+        .config("spark.driver.memory", driver_memory)
         .config("spark.ui.showConsoleProgress", "false")
         .config("spark.sql.files.maxPartitionBytes", 64 * 1024 * 1024)
-        .config("spark.sql.shuffle.partitions", "64")
+        .config("spark.sql.shuffle.partitions", str(shuffle_partitions))
     )
     if local_path is not None:
         local_path_text = str(local_path).replace("\\", "/")
