@@ -66,25 +66,20 @@ dates were available. The station map included only stations with at least
 365 valid days. For the hourly analysis, only station-hours containing all 12
 five-minute observations were retained.
 
-\section{Task 1 Implementation}
+\section{Experimental Environment}
 
-Task 1 was implemented with PySpark in local mode, using four CPU threads and
-4~GB of driver memory. The annual CSV files were read with a fixed schema and
-combined into one Spark DataFrame. Spark transformations were then used to
-clean the records and produce station-day, Singapore-wide daily, and
-station-hour datasets. The annual, monthly, year-month, hourly, and station
-summaries were calculated with Spark grouping operations. Only these small
-summary tables were converted to pandas for plotting with Matplotlib and
-Seaborn. Each plot was saved as a PNG file, and its underlying summary data was
-also saved as a CSV file so that the reported values could be checked easily.
+The entire project, including exploratory analysis, model training,
+evaluation, ablation experiments, and inference, used PySpark in local mode
+with four CPU threads and 4~GB of driver memory. All experiments were run in
+the same Conda environment and used CPU-based Spark execution.
 
 Table~\ref{tab:runtime-configuration} records the local machine and software
-environment used to run Task 1. Package versions were read directly from the
-\texttt{dsa5208proj2} Conda environment.
+environment used throughout the project. Package versions were read directly
+from the \texttt{dsa5208proj2} Conda environment.
 
 \begin{table}[htbp]
     \centering
-    \caption{Local machine and software environment used for Task 1.}
+    \caption{Local machine and software environment used for the project.}
     \label{tab:runtime-configuration}
     \small
     \begin{tabularx}{\textwidth}{@{}p{0.25\textwidth}p{0.34\textwidth}X@{}}
@@ -94,7 +89,7 @@ environment used to run Task 1. Package versions were read directly from the
         Operating system & Windows 11 Home, 64-bit (build 10.0.26200) & Chinese-language edition. \\
         Processor & Intel Core i7-12800HX & 16 physical cores and 24 logical processors. \\
         System memory & 15.7 GB RAM & Total visible memory reported by Windows. \\
-        Graphics & NVIDIA GeForce RTX 4070 Laptop GPU; Intel UHD Graphics & Task 1 used CPU-based local Spark execution. \\
+        Graphics & NVIDIA GeForce RTX 4070 Laptop GPU; Intel UHD Graphics & All Spark computation used CPU-based local execution. \\
         Conda environment & \texttt{dsa5208proj2} & Managed with Conda 24.7.1. \\
         Python & CPython 3.10.22 & Environment interpreter. \\
         Java & Temurin OpenJDK 17.0.20.1 & Java runtime used by Spark. \\
@@ -574,15 +569,26 @@ GBT baselines and the rainfall-history and time-feature ablations have separate
 entry scripts listed in the README. Fixed sampling rules, data splits, model
 settings, and random seeds are recorded there and in each saved run directory.
 
+The final submitted model is the Spark GBT configuration stored in
+\path{models/final_gbt_run_20261017_184044}. It uses station identity,
+the requested threshold, current rainfall, 15- and 30-minute rainfall history,
+cyclic month and hour features, and mean current rainfall from the three
+nearest stations. The fitted ensemble is stored in \texttt{model.json}, while
+\texttt{neighbor\_mapping.json} records the station mapping required to
+construct the neighbor feature. This is the model used for the final results
+reported above and for the inference example below.
+
+\begin{samepage}
 For a single prediction, \texttt{inference.py} accepts a saved model run,
 station ID, Singapore-local prediction time, and rainfall threshold. For
 example:
 
 \begin{verbatim}
-python inference.py --model-run models/final_gbt_run_20261017_184044 \
-  --station-id S06 --prediction-time "2024-11-13 16:30:00" \
+python inference.py --model-run models/final_gbt_run_20261017_184044 `
+  --station-id S06 --prediction-time "2024-11-13 16:30:00" `
   --threshold-mm 1.0
 \end{verbatim}
+\end{samepage}
 
 The script obtains the current, 15-minute, 30-minute, and neighboring-station
 rainfall features from the annual CSV file and evaluates the fitted trees in
