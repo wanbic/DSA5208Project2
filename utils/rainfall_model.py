@@ -7,7 +7,7 @@ from pyspark.ml.classification import GBTClassifier
 from pyspark.ml.feature import OneHotEncoder, StringIndexer, VectorAssembler
 from pyspark.sql import functions as F
 
-from logistic_model import (
+from .logistic_model import (
     NUMERIC_FEATURES as BASE_NUMERIC_FEATURES,
     make_examples as make_base_examples,
 )

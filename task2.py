@@ -7,10 +7,10 @@ import matplotlib.pyplot as plt
 from pyspark import StorageLevel
 from pyspark.sql import functions as F
 
-from logistic_model import THRESHOLDS as DEFAULT_THRESHOLDS
-from model_evaluation import evaluate, plot_threshold_metrics, save_json
-from preprocess import clean_rainfall_data, create_spark, load_rainfall_data
-from rainfall_model import (
+from utils.logistic_model import THRESHOLDS as DEFAULT_THRESHOLDS
+from utils.model_evaluation import evaluate, plot_threshold_metrics, save_json
+from utils.preprocess import clean_rainfall_data, create_spark, load_rainfall_data
+from utils.rainfall_model import (
     NUMERIC_FEATURES,
     build_neighbor_pairs,
     make_examples,

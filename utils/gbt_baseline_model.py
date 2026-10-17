@@ -5,7 +5,7 @@ from pyspark.ml import Pipeline
 from pyspark.ml.classification import GBTClassifier
 from pyspark.ml.feature import OneHotEncoder, StringIndexer, VectorAssembler
 
-from logistic_model import (
+from .logistic_model import (
     NUMERIC_FEATURES,
     THRESHOLDS,
     make_examples as make_logistic_examples,

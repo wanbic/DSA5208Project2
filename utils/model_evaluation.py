@@ -5,7 +5,7 @@ from pyspark.ml.evaluation import BinaryClassificationEvaluator
 from pyspark.ml.functions import vector_to_array
 from pyspark.sql import functions as F
 
-from logistic_model import THRESHOLDS
+from .logistic_model import THRESHOLDS
 
 
 def save_json(data, path):

@@ -4,7 +4,7 @@ from pathlib import Path
 from pyspark import StorageLevel
 from pyspark.sql import functions as F
 
-from gbt_baseline_model import (
+from utils.gbt_baseline_model import (
     MAX_DEPTH,
     MAX_ITER,
     SAMPLE_MODULUS,
@@ -17,9 +17,9 @@ from gbt_baseline_model import (
     save_model,
     train_model,
 )
-from logistic_model import NUMERIC_FEATURES, THRESHOLDS
-from preprocess import clean_rainfall_data, create_spark, load_rainfall_data
-from model_evaluation import evaluate, plot_threshold_metrics, save_json
+from utils.logistic_model import NUMERIC_FEATURES, THRESHOLDS
+from utils.preprocess import clean_rainfall_data, create_spark, load_rainfall_data
+from utils.model_evaluation import evaluate, plot_threshold_metrics, save_json
 
 
 PROJECT_PATH = Path(__file__).resolve().parent

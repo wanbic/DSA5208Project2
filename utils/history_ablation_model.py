@@ -1,6 +1,6 @@
 """GBT model helpers for rainfall-history ablation experiments.
 
-This module is intentionally separate from ``rainfall_model.py`` so that
+This module is intentionally separate from ``utils/rainfall_model.py`` so that
 ablation-only feature changes cannot alter the selected final model.
 """
 
@@ -13,7 +13,7 @@ from pyspark.ml.classification import GBTClassifier
 from pyspark.ml.feature import OneHotEncoder, StringIndexer, VectorAssembler
 from pyspark.sql import functions as F
 
-from logistic_model import (
+from .logistic_model import (
     NUMERIC_FEATURES as BASE_NUMERIC_FEATURES,
     make_examples as make_base_examples,
 )

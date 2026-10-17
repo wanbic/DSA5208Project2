@@ -9,7 +9,7 @@ from pathlib import Path
 
 from pyspark.sql import functions as F
 
-from preprocess import clean_rainfall_data, create_spark, load_rainfall_data
+from utils.preprocess import clean_rainfall_data, create_spark, load_rainfall_data
 
 
 PROJECT_PATH = Path(__file__).resolve().parent

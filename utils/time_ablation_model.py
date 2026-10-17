@@ -8,7 +8,7 @@ from pyspark.ml.classification import GBTClassifier
 from pyspark.ml.feature import OneHotEncoder, StringIndexer, VectorAssembler
 from pyspark.sql import functions as F
 
-from rainfall_model import (
+from .rainfall_model import (
     NEIGHBOR_FEATURE,
     NUMERIC_FEATURES as FULL_NUMERIC_FEATURES,
     build_neighbor_pairs,

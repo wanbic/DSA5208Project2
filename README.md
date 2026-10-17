@@ -6,19 +6,19 @@ predict whether rainfall at a station will exceed a threshold in the next
 
 ## Main files
 
-- `preprocess.py`: shared data loading and cleaning functions.
+- `utils/preprocess.py`: shared data loading and cleaning functions.
 - `task1.py`: Task 1 rainfall pattern analysis.
 - `task2.py`: final Task 2 training script.
 - `inference.py`: load a trained final model and run one prediction.
-- `rainfall_model.py`: final GBT model with neighbor rainfall.
-- `model_evaluation.py`: shared evaluation and plotting functions.
-- `task2_logistic.py` and `logistic_model.py`: logistic baseline.
-- `task2_gbt_baseline.py` and `gbt_baseline_model.py`: GBT baseline without
+- `utils/rainfall_model.py`: final GBT model with neighbor rainfall.
+- `utils/model_evaluation.py`: shared evaluation and plotting functions.
+- `task2_logistic.py` and `utils/logistic_model.py`: logistic baseline.
+- `task2_gbt_baseline.py` and `utils/gbt_baseline_model.py`: GBT baseline without
   neighbor rainfall.
 - `plot_model_comparison.py`: plot the preliminary model comparison.
-- `task2_history_ablation.py` and `history_ablation_model.py`: remove the
+- `task2_history_ablation.py` and `utils/history_ablation_model.py`: remove the
   30-minute history feature, then remove both 15- and 30-minute history.
-- `task2_time_ablation.py` and `time_ablation_model.py`: remove month/hour
+- `task2_time_ablation.py` and `utils/time_ablation_model.py`: remove month/hour
   features or replace their cyclic encoding with raw numeric values.
 - `plot_history_ablation_comparison.py`: recreate the threshold-level history
   ablation comparison from saved results.

@@ -4,9 +4,9 @@ from pathlib import Path
 from pyspark import StorageLevel
 from pyspark.sql import functions as F
 
-from model_evaluation import evaluate, plot_threshold_metrics, save_json
-from preprocess import clean_rainfall_data, create_spark, load_rainfall_data
-from logistic_model import (
+from utils.model_evaluation import evaluate, plot_threshold_metrics, save_json
+from utils.preprocess import clean_rainfall_data, create_spark, load_rainfall_data
+from utils.logistic_model import (
     MAX_ITER,
     NUMERIC_FEATURES,
     SAMPLE_MODULUS,
