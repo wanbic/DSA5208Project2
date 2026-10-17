@@ -1,0 +1,148 @@
+{
+  "training_rows": 2377011,
+  "validation_rows": 1958663,
+  "test_rows": 1855560,
+  "validation": {
+    "pr_auc": 0.6433038060629737,
+    "roc_auc": 0.9239740713855124,
+    "threshold_results": [
+      {
+        "threshold_mm": 0.0,
+        "rows": 279809,
+        "positive_rate": 0.06753892834040363,
+        "pr_auc": 0.706947430812568,
+        "roc_auc": 0.8821130376310328,
+        "brier_score": 0.03312639540930804
+      },
+      {
+        "threshold_mm": 0.2,
+        "rows": 279809,
+        "positive_rate": 0.05179604658892316,
+        "pr_auc": 0.6973174161045459,
+        "roc_auc": 0.8999162080976368,
+        "brier_score": 0.026335968106778917
+      },
+      {
+        "threshold_mm": 0.5,
+        "rows": 279809,
+        "positive_rate": 0.0383690303028137,
+        "pr_auc": 0.6726223944880315,
+        "roc_auc": 0.9150733223990102,
+        "brier_score": 0.020976663471578078
+      },
+      {
+        "threshold_mm": 1.0,
+        "rows": 279809,
+        "positive_rate": 0.026914788302020307,
+        "pr_auc": 0.6150580271695448,
+        "roc_auc": 0.9148821485243205,
+        "brier_score": 0.01664079162829338
+      },
+      {
+        "threshold_mm": 2.0,
+        "rows": 279809,
+        "positive_rate": 0.01784431522931714,
+        "pr_auc": 0.5288090274845769,
+        "roc_auc": 0.9109815411930686,
+        "brier_score": 0.012991178098981598
+      },
+      {
+        "threshold_mm": 5.0,
+        "rows": 279809,
+        "positive_rate": 0.008920370681429118,
+        "pr_auc": 0.40280765764061216,
+        "roc_auc": 0.9117232966218308,
+        "brier_score": 0.008349593121491044
+      },
+      {
+        "threshold_mm": 10.0,
+        "rows": 279809,
+        "positive_rate": 0.004177849890460993,
+        "pr_auc": 0.2667486382722836,
+        "roc_auc": 0.9290491353333693,
+        "brier_score": 0.005380473817162369
+      }
+    ]
+  },
+  "test": {
+    "pr_auc": 0.6280756059394329,
+    "roc_auc": 0.9181164880471672,
+    "threshold_results": [
+      {
+        "threshold_mm": 0.0,
+        "rows": 265080,
+        "positive_rate": 0.06334691413912781,
+        "pr_auc": 0.6892208999037841,
+        "roc_auc": 0.8739781074874107,
+        "brier_score": 0.03226942829305866
+      },
+      {
+        "threshold_mm": 0.2,
+        "rows": 265080,
+        "positive_rate": 0.04852874603893164,
+        "pr_auc": 0.6796951888049554,
+        "roc_auc": 0.8903284738678345,
+        "brier_score": 0.02566079864579131
+      },
+      {
+        "threshold_mm": 0.5,
+        "rows": 265080,
+        "positive_rate": 0.03636260751471254,
+        "pr_auc": 0.6600534329604196,
+        "roc_auc": 0.9047309691636755,
+        "brier_score": 0.020442280132244448
+      },
+      {
+        "threshold_mm": 1.0,
+        "rows": 265080,
+        "positive_rate": 0.025860117700316886,
+        "pr_auc": 0.6047473314398023,
+        "roc_auc": 0.906264011187299,
+        "brier_score": 0.016335751924038147
+      },
+      {
+        "threshold_mm": 2.0,
+        "rows": 265080,
+        "positive_rate": 0.01690810321412404,
+        "pr_auc": 0.5251456257109938,
+        "roc_auc": 0.9017355511048032,
+        "brier_score": 0.012520222527338143
+      },
+      {
+        "threshold_mm": 5.0,
+        "rows": 265080,
+        "positive_rate": 0.00818998038328052,
+        "pr_auc": 0.40518683707828307,
+        "roc_auc": 0.8973432404473172,
+        "brier_score": 0.007853360315508845
+      },
+      {
+        "threshold_mm": 10.0,
+        "rows": 265080,
+        "positive_rate": 0.003810170514561642,
+        "pr_auc": 0.2889528178330138,
+        "roc_auc": 0.9069675944759622,
+        "brier_score": 0.005047040799992601
+      }
+    ]
+  },
+  "baseline_comparison": {
+    "baseline_run": "gbt_run_20261016_163426",
+    "validation_pr_auc_change": 0.036718722866616926,
+    "validation_roc_auc_change": 0.00942242810850824,
+    "validation_mean_brier_change": -0.001017211864335947,
+    "test_pr_auc_change": 0.033181548555552,
+    "test_roc_auc_change": 0.00869701958414737,
+    "test_mean_brier_change": -0.0008169177033665875
+  },
+  "example_prediction": {
+    "station_id": "S06",
+    "prediction_time": "2024-11-13 16:30:00",
+    "threshold_mm": 1.0,
+    "current_rainfall_mm": 0.0,
+    "recent_15min_rainfall_mm": 0.0,
+    "recent_30min_rainfall_mm": 0.0,
+    "neighbor_rainfall_mm": 0.0,
+    "probability": 0.047299787865429765
+  }
+}

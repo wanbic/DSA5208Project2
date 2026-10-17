@@ -1,0 +1,138 @@
+{
+  "training_rows": 9490075,
+  "validation_rows": 1958663,
+  "test_rows": 1855560,
+  "validation": {
+    "pr_auc": 0.490290660235461,
+    "roc_auc": 0.8880542507133264,
+    "threshold_results": [
+      {
+        "threshold_mm": 0.0,
+        "rows": 279809,
+        "positive_rate": 0.06753892834040363,
+        "pr_auc": 0.5173682329678093,
+        "roc_auc": 0.8131956894261452,
+        "brier_score": 0.05007945167192998
+      },
+      {
+        "threshold_mm": 0.2,
+        "rows": 279809,
+        "positive_rate": 0.05179604658892316,
+        "pr_auc": 0.5484175805528504,
+        "roc_auc": 0.8536645335388386,
+        "brier_score": 0.037183763308714216
+      },
+      {
+        "threshold_mm": 0.5,
+        "rows": 279809,
+        "positive_rate": 0.0383690303028137,
+        "pr_auc": 0.5559422416785275,
+        "roc_auc": 0.8746286994660029,
+        "brier_score": 0.02674537075362197
+      },
+      {
+        "threshold_mm": 1.0,
+        "rows": 279809,
+        "positive_rate": 0.026914788302020307,
+        "pr_auc": 0.5294766391325134,
+        "roc_auc": 0.8876036090566903,
+        "brier_score": 0.018634691338384298
+      },
+      {
+        "threshold_mm": 2.0,
+        "rows": 279809,
+        "positive_rate": 0.01784431522931714,
+        "pr_auc": 0.47184503486446894,
+        "roc_auc": 0.8876436778023934,
+        "brier_score": 0.012879367094449852
+      },
+      {
+        "threshold_mm": 5.0,
+        "rows": 279809,
+        "positive_rate": 0.008920370681429118,
+        "pr_auc": 0.37990043128806456,
+        "roc_auc": 0.8879804590483107,
+        "brier_score": 0.007607987131290659
+      },
+      {
+        "threshold_mm": 10.0,
+        "rows": 279809,
+        "positive_rate": 0.004177849890460993,
+        "pr_auc": 0.28859824390156436,
+        "roc_auc": 0.9059472048888563,
+        "brier_score": 0.004472009775822619
+      }
+    ]
+  },
+  "test": {
+    "pr_auc": 0.4789712837178174,
+    "roc_auc": 0.882376087028366,
+    "threshold_results": [
+      {
+        "threshold_mm": 0.0,
+        "rows": 265080,
+        "positive_rate": 0.06334691413912781,
+        "pr_auc": 0.5006566213288771,
+        "roc_auc": 0.8035088154573419,
+        "brier_score": 0.047373373035893646
+      },
+      {
+        "threshold_mm": 0.2,
+        "rows": 265080,
+        "positive_rate": 0.04852874603893164,
+        "pr_auc": 0.5294464064427015,
+        "roc_auc": 0.8399236723210339,
+        "brier_score": 0.03519021637755028
+      },
+      {
+        "threshold_mm": 0.5,
+        "rows": 265080,
+        "positive_rate": 0.03636260751471254,
+        "pr_auc": 0.5378698094878887,
+        "roc_auc": 0.8598816308028314,
+        "brier_score": 0.025629034916577913
+      },
+      {
+        "threshold_mm": 1.0,
+        "rows": 265080,
+        "positive_rate": 0.025860117700316886,
+        "pr_auc": 0.5230975799256382,
+        "roc_auc": 0.8739186370171889,
+        "brier_score": 0.017971342531164704
+      },
+      {
+        "threshold_mm": 2.0,
+        "rows": 265080,
+        "positive_rate": 0.01690810321412404,
+        "pr_auc": 0.4703602985833687,
+        "roc_auc": 0.8720639830418663,
+        "brier_score": 0.012182438472981102
+      },
+      {
+        "threshold_mm": 5.0,
+        "rows": 265080,
+        "positive_rate": 0.00818998038328052,
+        "pr_auc": 0.3829569005352399,
+        "roc_auc": 0.8672718194869626,
+        "brier_score": 0.007007332857383599
+      },
+      {
+        "threshold_mm": 10.0,
+        "rows": 265080,
+        "positive_rate": 0.003810170514561642,
+        "pr_auc": 0.29916628707333714,
+        "roc_auc": 0.8749777005571957,
+        "brier_score": 0.003971731796069978
+      }
+    ]
+  },
+  "example_prediction": {
+    "station_id": "S208",
+    "prediction_time": "2024-01-01 01:30:00",
+    "threshold_mm": 1.0,
+    "current_rainfall_mm": 0.0,
+    "recent_15min_rainfall_mm": 0.0,
+    "recent_30min_rainfall_mm": 0.0,
+    "probability": 0.011535383673640931
+  }
+}

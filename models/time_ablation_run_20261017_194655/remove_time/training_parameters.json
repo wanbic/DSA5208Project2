@@ -1,0 +1,59 @@
+{
+  "algorithm": "Spark GBTClassifier time-feature ablation",
+  "variant": "remove_time",
+  "description": "Remove month and hour",
+  "data_years": [
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024
+  ],
+  "training_period": [
+    "2017-01-01",
+    "2022-12-31"
+  ],
+  "validation_period": [
+    "2023-01-01",
+    "2023-12-31"
+  ],
+  "test_period": [
+    "2024-01-01",
+    "2024-12-31"
+  ],
+  "thresholds_mm": [
+    0.0,
+    0.2,
+    0.5,
+    1.0,
+    2.0,
+    5.0,
+    10.0
+  ],
+  "sample_modulus": 4,
+  "training_sample_modulus": 16,
+  "prediction_minutes": [
+    0,
+    30
+  ],
+  "features": [
+    "station_id",
+    "current_rainfall_mm",
+    "recent_15min_rainfall_mm",
+    "recent_30min_rainfall_mm",
+    "threshold_mm",
+    "neighbor_rainfall_mm"
+  ],
+  "neighbor_count": 3,
+  "max_iter": 20,
+  "max_depth": 4,
+  "step_size": 0.1,
+  "subsampling_rate": 0.8,
+  "seed": 5208,
+  "spark_master": "local[4]",
+  "driver_memory": "4g",
+  "shuffle_partitions": 64
+}

@@ -1,0 +1,325 @@
+{
+  "full_model_source": "D:\\NUS\\DSA5208\\project2\\models\\final_gbt_run_20261017_184044",
+  "summary": [
+    {
+      "variant": "full_cyclic_time",
+      "label": "Full cyclic month/hour",
+      "features": [
+        "station_id",
+        "current_rainfall_mm",
+        "recent_15min_rainfall_mm",
+        "recent_30min_rainfall_mm",
+        "month_sin",
+        "month_cos",
+        "hour_sin",
+        "hour_cos",
+        "threshold_mm",
+        "neighbor_rainfall_mm"
+      ],
+      "validation_pr_auc": 0.6433038060629737,
+      "validation_roc_auc": 0.9239740713855124,
+      "validation_mean_brier": 0.017685866236227633,
+      "test_pr_auc": 0.6280756059394329,
+      "test_roc_auc": 0.9181164880471672,
+      "test_mean_brier": 0.017161268948281735
+    },
+    {
+      "variant": "remove_time",
+      "label": "Remove month and hour",
+      "features": [
+        "station_id",
+        "current_rainfall_mm",
+        "recent_15min_rainfall_mm",
+        "recent_30min_rainfall_mm",
+        "threshold_mm",
+        "neighbor_rainfall_mm"
+      ],
+      "validation_pr_auc": 0.644353015300023,
+      "validation_roc_auc": 0.9165836867166619,
+      "validation_mean_brier": 0.017695826644120945,
+      "test_pr_auc": 0.6281119101918443,
+      "test_roc_auc": 0.9116116960671398,
+      "test_mean_brier": 0.017179541039384273
+    },
+    {
+      "variant": "noncyclic_time",
+      "label": "Non-cyclic month and hour",
+      "features": [
+        "station_id",
+        "current_rainfall_mm",
+        "recent_15min_rainfall_mm",
+        "recent_30min_rainfall_mm",
+        "month",
+        "hour",
+        "threshold_mm",
+        "neighbor_rainfall_mm"
+      ],
+      "validation_pr_auc": 0.6432847494197743,
+      "validation_roc_auc": 0.9160961105128061,
+      "validation_mean_brier": 0.017707357557061477,
+      "test_pr_auc": 0.627979447707257,
+      "test_roc_auc": 0.9082370921139619,
+      "test_mean_brier": 0.017175266731152952
+    }
+  ],
+  "results": {
+    "remove_time": {
+      "training_rows": 2377011,
+      "validation_rows": 1958663,
+      "test_rows": 1855560,
+      "validation": {
+        "pr_auc": 0.644353015300023,
+        "roc_auc": 0.9165836867166619,
+        "threshold_results": [
+          {
+            "threshold_mm": 0.0,
+            "rows": 279809,
+            "positive_rate": 0.06753892834040363,
+            "pr_auc": 0.7334508345583403,
+            "roc_auc": 0.8431537573466317,
+            "brier_score": 0.033134877196822586
+          },
+          {
+            "threshold_mm": 0.2,
+            "rows": 279809,
+            "positive_rate": 0.05179604658892316,
+            "pr_auc": 0.7137318675354912,
+            "roc_auc": 0.8633352261641563,
+            "brier_score": 0.026382673583406027
+          },
+          {
+            "threshold_mm": 0.5,
+            "rows": 279809,
+            "positive_rate": 0.0383690303028137,
+            "pr_auc": 0.6869938642620308,
+            "roc_auc": 0.8790817919993048,
+            "brier_score": 0.02101671272144201
+          },
+          {
+            "threshold_mm": 1.0,
+            "rows": 279809,
+            "positive_rate": 0.026914788302020307,
+            "pr_auc": 0.6234053581201309,
+            "roc_auc": 0.8777005216132833,
+            "brier_score": 0.016682252716539628
+          },
+          {
+            "threshold_mm": 2.0,
+            "rows": 279809,
+            "positive_rate": 0.01784431522931714,
+            "pr_auc": 0.5428264458240931,
+            "roc_auc": 0.8734717841412536,
+            "brier_score": 0.012982391524653325
+          },
+          {
+            "threshold_mm": 5.0,
+            "rows": 279809,
+            "positive_rate": 0.008920370681429118,
+            "pr_auc": 0.3947793719700002,
+            "roc_auc": 0.8765413381015269,
+            "brier_score": 0.008323638811805482
+          },
+          {
+            "threshold_mm": 10.0,
+            "rows": 279809,
+            "positive_rate": 0.004177849890460993,
+            "pr_auc": 0.2932913866682151,
+            "roc_auc": 0.8969524790090054,
+            "brier_score": 0.005348239954177573
+          }
+        ]
+      },
+      "test": {
+        "pr_auc": 0.6281119101918443,
+        "roc_auc": 0.9116116960671398,
+        "threshold_results": [
+          {
+            "threshold_mm": 0.0,
+            "rows": 265080,
+            "positive_rate": 0.06334691413912781,
+            "pr_auc": 0.7168218914541663,
+            "roc_auc": 0.8351323431222902,
+            "brier_score": 0.03229494920403454
+          },
+          {
+            "threshold_mm": 0.2,
+            "rows": 265080,
+            "positive_rate": 0.04852874603893164,
+            "pr_auc": 0.6974730124852583,
+            "roc_auc": 0.8556885635441378,
+            "brier_score": 0.025698382328371436
+          },
+          {
+            "threshold_mm": 0.5,
+            "rows": 265080,
+            "positive_rate": 0.03636260751471254,
+            "pr_auc": 0.6721442428682364,
+            "roc_auc": 0.870838426363508,
+            "brier_score": 0.020501368983076525
+          },
+          {
+            "threshold_mm": 1.0,
+            "rows": 265080,
+            "positive_rate": 0.025860117700316886,
+            "pr_auc": 0.613702870454246,
+            "roc_auc": 0.8724799087412883,
+            "brier_score": 0.01638423079758431
+          },
+          {
+            "threshold_mm": 2.0,
+            "rows": 265080,
+            "positive_rate": 0.01690810321412404,
+            "pr_auc": 0.534274404947118,
+            "roc_auc": 0.8661782029811165,
+            "brier_score": 0.01253184167005895
+          },
+          {
+            "threshold_mm": 5.0,
+            "rows": 265080,
+            "positive_rate": 0.00818998038328052,
+            "pr_auc": 0.3789333749961636,
+            "roc_auc": 0.8653004180861397,
+            "brier_score": 0.007827962122229385
+          },
+          {
+            "threshold_mm": 10.0,
+            "rows": 265080,
+            "positive_rate": 0.003810170514561642,
+            "pr_auc": 0.27119517944405913,
+            "roc_auc": 0.878156946834154,
+            "brier_score": 0.005018052170334739
+          }
+        ]
+      }
+    },
+    "noncyclic_time": {
+      "training_rows": 2377011,
+      "validation_rows": 1958663,
+      "test_rows": 1855560,
+      "validation": {
+        "pr_auc": 0.6432847494197743,
+        "roc_auc": 0.9160961105128061,
+        "threshold_results": [
+          {
+            "threshold_mm": 0.0,
+            "rows": 279809,
+            "positive_rate": 0.06753892834040363,
+            "pr_auc": 0.7101911916228484,
+            "roc_auc": 0.878291414334461,
+            "brier_score": 0.03315682077635867
+          },
+          {
+            "threshold_mm": 0.2,
+            "rows": 279809,
+            "positive_rate": 0.05179604658892316,
+            "pr_auc": 0.709866943211454,
+            "roc_auc": 0.878834824051384,
+            "brier_score": 0.026374896639111037
+          },
+          {
+            "threshold_mm": 0.5,
+            "rows": 279809,
+            "positive_rate": 0.0383690303028137,
+            "pr_auc": 0.6845982101750758,
+            "roc_auc": 0.8952361222861182,
+            "brier_score": 0.021050763086444123
+          },
+          {
+            "threshold_mm": 1.0,
+            "rows": 279809,
+            "positive_rate": 0.026914788302020307,
+            "pr_auc": 0.6204297176476853,
+            "roc_auc": 0.8777191329389186,
+            "brier_score": 0.016674344633497318
+          },
+          {
+            "threshold_mm": 2.0,
+            "rows": 279809,
+            "positive_rate": 0.01784431522931714,
+            "pr_auc": 0.5325058883136677,
+            "roc_auc": 0.8734541760887226,
+            "brier_score": 0.012997865555272508
+          },
+          {
+            "threshold_mm": 5.0,
+            "rows": 279809,
+            "positive_rate": 0.008920370681429118,
+            "pr_auc": 0.40217375538828687,
+            "roc_auc": 0.8764633099486677,
+            "brier_score": 0.00832970193667752
+          },
+          {
+            "threshold_mm": 10.0,
+            "rows": 279809,
+            "positive_rate": 0.004177849890460993,
+            "pr_auc": 0.2634559029069628,
+            "roc_auc": 0.8973641418405959,
+            "brier_score": 0.005367110272069163
+          }
+        ]
+      },
+      "test": {
+        "pr_auc": 0.627979447707257,
+        "roc_auc": 0.9082370921139619,
+        "threshold_results": [
+          {
+            "threshold_mm": 0.0,
+            "rows": 265080,
+            "positive_rate": 0.06334691413912781,
+            "pr_auc": 0.6931847219058919,
+            "roc_auc": 0.8732314734560969,
+            "brier_score": 0.032301503032392015
+          },
+          {
+            "threshold_mm": 0.2,
+            "rows": 265080,
+            "positive_rate": 0.04852874603893164,
+            "pr_auc": 0.6942716761874256,
+            "roc_auc": 0.8719420279722626,
+            "brier_score": 0.02567604170544466
+          },
+          {
+            "threshold_mm": 0.5,
+            "rows": 265080,
+            "positive_rate": 0.03636260751471254,
+            "pr_auc": 0.671722373102847,
+            "roc_auc": 0.8876089342235126,
+            "brier_score": 0.02050123852307149
+          },
+          {
+            "threshold_mm": 1.0,
+            "rows": 265080,
+            "positive_rate": 0.025860117700316886,
+            "pr_auc": 0.6122340055256514,
+            "roc_auc": 0.8725096457828472,
+            "brier_score": 0.016367098572039107
+          },
+          {
+            "threshold_mm": 2.0,
+            "rows": 265080,
+            "positive_rate": 0.01690810321412404,
+            "pr_auc": 0.5295789804196702,
+            "roc_auc": 0.8662139576827963,
+            "brier_score": 0.012517588859353269
+          },
+          {
+            "threshold_mm": 5.0,
+            "rows": 265080,
+            "positive_rate": 0.00818998038328052,
+            "pr_auc": 0.406370966376868,
+            "roc_auc": 0.8653048068524195,
+            "brier_score": 0.007830981217499762
+          },
+          {
+            "threshold_mm": 10.0,
+            "rows": 265080,
+            "positive_rate": 0.003810170514561642,
+            "pr_auc": 0.2843090021595634,
+            "roc_auc": 0.8783700972626896,
+            "brier_score": 0.0050324152082703655
+          }
+        ]
+      }
+    }
+  }
+}

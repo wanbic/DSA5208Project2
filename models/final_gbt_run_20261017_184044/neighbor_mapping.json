@@ -1,0 +1,1367 @@
+[
+  {
+    "station_id": "S46",
+    "neighbor_id": "S213",
+    "distance_km": 1.9296035366370048
+  },
+  {
+    "station_id": "S46",
+    "neighbor_id": "S07",
+    "distance_km": 2.5345737930929224
+  },
+  {
+    "station_id": "S46",
+    "neighbor_id": "S90",
+    "distance_km": 2.674373345553599
+  },
+  {
+    "station_id": "S11",
+    "neighbor_id": "S228",
+    "distance_km": 3.1609545781051547
+  },
+  {
+    "station_id": "S11",
+    "neighbor_id": "S121",
+    "distance_km": 3.189446861244643
+  },
+  {
+    "station_id": "S11",
+    "neighbor_id": "S101",
+    "distance_km": 3.451178981416216
+  },
+  {
+    "station_id": "S113",
+    "neighbor_id": "S78",
+    "distance_km": 2.1941578115001965
+  },
+  {
+    "station_id": "S113",
+    "neighbor_id": "S61",
+    "distance_km": 2.2253802024638563
+  },
+  {
+    "station_id": "S113",
+    "neighbor_id": "S212",
+    "distance_km": 3.1108271726374457
+  },
+  {
+    "station_id": "S69",
+    "neighbor_id": "S08",
+    "distance_km": 2.4567305305096077
+  },
+  {
+    "station_id": "S69",
+    "neighbor_id": "S103",
+    "distance_km": 3.1832716961052916
+  },
+  {
+    "station_id": "S69",
+    "neighbor_id": "S46",
+    "distance_km": 3.218708900441325
+  },
+  {
+    "station_id": "S91",
+    "neighbor_id": "S122",
+    "distance_km": 1.5661228559099023
+  },
+  {
+    "station_id": "S91",
+    "neighbor_id": "S209",
+    "distance_km": 1.8421699629945716
+  },
+  {
+    "station_id": "S91",
+    "neighbor_id": "S227",
+    "distance_km": 3.1664787329170436
+  },
+  {
+    "station_id": "S108",
+    "neighbor_id": "S119",
+    "distance_km": 2.3874707115027496
+  },
+  {
+    "station_id": "S108",
+    "neighbor_id": "S72",
+    "distance_km": 2.542883424115524
+  },
+  {
+    "station_id": "S108",
+    "neighbor_id": "S214",
+    "distance_km": 2.553738435766702
+  },
+  {
+    "station_id": "S50",
+    "neighbor_id": "S201",
+    "distance_km": 1.5936740972840906
+  },
+  {
+    "station_id": "S50",
+    "neighbor_id": "S35",
+    "distance_km": 2.358372479156534
+  },
+  {
+    "station_id": "S50",
+    "neighbor_id": "S103",
+    "distance_km": 3.369279631851066
+  },
+  {
+    "station_id": "S101",
+    "neighbor_id": "S229",
+    "distance_km": 0.9588682071184427
+  },
+  {
+    "station_id": "S101",
+    "neighbor_id": "S228",
+    "distance_km": 1.461229777182079
+  },
+  {
+    "station_id": "S101",
+    "neighbor_id": "S121",
+    "distance_km": 2.6806925600586804
+  },
+  {
+    "station_id": "S122",
+    "neighbor_id": "S91",
+    "distance_km": 1.5661228559099023
+  },
+  {
+    "station_id": "S122",
+    "neighbor_id": "S209",
+    "distance_km": 2.2433598575903115
+  },
+  {
+    "station_id": "S122",
+    "neighbor_id": "S227",
+    "distance_km": 3.392598413114612
+  },
+  {
+    "station_id": "S114",
+    "neighbor_id": "S121",
+    "distance_km": 1.1545815404516444
+  },
+  {
+    "station_id": "S114",
+    "neighbor_id": "S218",
+    "distance_km": 2.8433870538821706
+  },
+  {
+    "station_id": "S114",
+    "neighbor_id": "S229",
+    "distance_km": 3.274788909129323
+  },
+  {
+    "station_id": "S112",
+    "neighbor_id": "S66",
+    "distance_km": 3.8895247988049237
+  },
+  {
+    "station_id": "S112",
+    "neighbor_id": "S100",
+    "distance_km": 5.762459155395185
+  },
+  {
+    "station_id": "S112",
+    "neighbor_id": "S211",
+    "distance_km": 6.289446903019683
+  },
+  {
+    "station_id": "S84",
+    "neighbor_id": "S207",
+    "distance_km": 2.607985521568652
+  },
+  {
+    "station_id": "S84",
+    "neighbor_id": "S94",
+    "distance_km": 2.670462660135166
+  },
+  {
+    "station_id": "S84",
+    "neighbor_id": "S212",
+    "distance_km": 2.9786496160366633
+  },
+  {
+    "station_id": "S111",
+    "neighbor_id": "S79",
+    "distance_km": 1.1313079471541752
+  },
+  {
+    "station_id": "S111",
+    "neighbor_id": "S118",
+    "distance_km": 1.635868605451434
+  },
+  {
+    "station_id": "S111",
+    "neighbor_id": "S120",
+    "distance_km": 2.066393442174597
+  },
+  {
+    "station_id": "S82",
+    "neighbor_id": "S89",
+    "distance_km": 2.9970248451821075
+  },
+  {
+    "station_id": "S82",
+    "neighbor_id": "S115",
+    "distance_km": 3.9067395870126798
+  },
+  {
+    "station_id": "S82",
+    "neighbor_id": "S97",
+    "distance_km": 4.701953175252693
+  },
+  {
+    "station_id": "S208",
+    "neighbor_id": "S96",
+    "distance_km": 3.0909617818095176
+  },
+  {
+    "station_id": "S208",
+    "neighbor_id": "S224",
+    "distance_km": 3.9831274194530457
+  },
+  {
+    "station_id": "S208",
+    "neighbor_id": "S107",
+    "distance_km": 4.521122953028015
+  },
+  {
+    "station_id": "S214",
+    "neighbor_id": "S78",
+    "distance_km": 1.2343312910517832
+  },
+  {
+    "station_id": "S214",
+    "neighbor_id": "S119",
+    "distance_km": 1.8237022130023046
+  },
+  {
+    "station_id": "S214",
+    "neighbor_id": "S108",
+    "distance_km": 2.553738435766702
+  },
+  {
+    "station_id": "S202",
+    "neighbor_id": "S230",
+    "distance_km": 1.1567843305284164
+  },
+  {
+    "station_id": "S202",
+    "neighbor_id": "S201",
+    "distance_km": 1.8188256448133522
+  },
+  {
+    "station_id": "S202",
+    "neighbor_id": "S203",
+    "distance_km": 2.4339306485458105
+  },
+  {
+    "station_id": "S219",
+    "neighbor_id": "S55",
+    "distance_km": 1.1410124157086439
+  },
+  {
+    "station_id": "S219",
+    "neighbor_id": "S110",
+    "distance_km": 2.2811264462294885
+  },
+  {
+    "station_id": "S219",
+    "neighbor_id": "S204",
+    "distance_km": 2.401400094179117
+  },
+  {
+    "station_id": "S203",
+    "neighbor_id": "S71",
+    "distance_km": 1.2583251691636783
+  },
+  {
+    "station_id": "S203",
+    "neighbor_id": "S230",
+    "distance_km": 1.2860283872272398
+  },
+  {
+    "station_id": "S203",
+    "neighbor_id": "S116",
+    "distance_km": 2.1547653017915596
+  },
+  {
+    "station_id": "S229",
+    "neighbor_id": "S101",
+    "distance_km": 0.9588682071184427
+  },
+  {
+    "station_id": "S229",
+    "neighbor_id": "S121",
+    "distance_km": 2.359073325168659
+  },
+  {
+    "station_id": "S229",
+    "neighbor_id": "S228",
+    "distance_km": 2.4146671573173517
+  },
+  {
+    "station_id": "S100",
+    "neighbor_id": "S211",
+    "distance_km": 1.6370551984068051
+  },
+  {
+    "station_id": "S100",
+    "neighbor_id": "S66",
+    "distance_km": 2.7513033964990092
+  },
+  {
+    "station_id": "S100",
+    "neighbor_id": "S210",
+    "distance_km": 3.4106006031473286
+  },
+  {
+    "station_id": "S96",
+    "neighbor_id": "S208",
+    "distance_km": 3.0909617818095176
+  },
+  {
+    "station_id": "S96",
+    "neighbor_id": "S224",
+    "distance_km": 5.956288661136183
+  },
+  {
+    "station_id": "S96",
+    "neighbor_id": "S24B",
+    "distance_km": 6.670576932538717
+  },
+  {
+    "station_id": "S120",
+    "neighbor_id": "S90",
+    "distance_km": 1.158451371908577
+  },
+  {
+    "station_id": "S120",
+    "neighbor_id": "S77",
+    "distance_km": 1.7806332142679004
+  },
+  {
+    "station_id": "S120",
+    "neighbor_id": "S213",
+    "distance_km": 1.9578977580723804
+  },
+  {
+    "station_id": "S66",
+    "neighbor_id": "S211",
+    "distance_km": 2.5439477317724184
+  },
+  {
+    "station_id": "S66",
+    "neighbor_id": "S100",
+    "distance_km": 2.7513033964990092
+  },
+  {
+    "station_id": "S66",
+    "neighbor_id": "S210",
+    "distance_km": 3.642376764084473
+  },
+  {
+    "station_id": "S07",
+    "neighbor_id": "S88",
+    "distance_km": 1.6506355506415689
+  },
+  {
+    "station_id": "S07",
+    "neighbor_id": "S46",
+    "distance_km": 2.5345737930929224
+  },
+  {
+    "station_id": "S07",
+    "neighbor_id": "S217",
+    "distance_km": 2.6242569113984393
+  },
+  {
+    "station_id": "S79",
+    "neighbor_id": "S118",
+    "distance_km": 0.9956090697107873
+  },
+  {
+    "station_id": "S79",
+    "neighbor_id": "S111",
+    "distance_km": 1.1313079471541752
+  },
+  {
+    "station_id": "S79",
+    "neighbor_id": "S222",
+    "distance_km": 1.9087365090249713
+  },
+  {
+    "station_id": "S123",
+    "neighbor_id": "S36",
+    "distance_km": 2.068959423276501
+  },
+  {
+    "station_id": "S123",
+    "neighbor_id": "S119",
+    "distance_km": 2.469656647273122
+  },
+  {
+    "station_id": "S123",
+    "neighbor_id": "S88",
+    "distance_km": 2.5932297768107393
+  },
+  {
+    "station_id": "S116",
+    "neighbor_id": "S203",
+    "distance_km": 2.1547653017915596
+  },
+  {
+    "station_id": "S116",
+    "neighbor_id": "S230",
+    "distance_km": 2.574798045831544
+  },
+  {
+    "station_id": "S116",
+    "neighbor_id": "S202",
+    "distance_km": 3.21692711245765
+  },
+  {
+    "station_id": "S119",
+    "neighbor_id": "S214",
+    "distance_km": 1.8237022130023046
+  },
+  {
+    "station_id": "S119",
+    "neighbor_id": "S118",
+    "distance_km": 2.2862826590564085
+  },
+  {
+    "station_id": "S119",
+    "neighbor_id": "S108",
+    "distance_km": 2.3874707115027496
+  },
+  {
+    "station_id": "S104",
+    "neighbor_id": "S210",
+    "distance_km": 1.8658632261047448
+  },
+  {
+    "station_id": "S104",
+    "neighbor_id": "S105",
+    "distance_km": 1.9318640390431034
+  },
+  {
+    "station_id": "S104",
+    "neighbor_id": "S227",
+    "distance_km": 2.1157099637974413
+  },
+  {
+    "station_id": "S103",
+    "neighbor_id": "S64",
+    "distance_km": 2.76267332236419
+  },
+  {
+    "station_id": "S103",
+    "neighbor_id": "S218",
+    "distance_km": 2.930902765693471
+  },
+  {
+    "station_id": "S103",
+    "neighbor_id": "S69",
+    "distance_km": 3.1832716961052916
+  },
+  {
+    "station_id": "S215",
+    "neighbor_id": "S43",
+    "distance_km": 1.346413229707353
+  },
+  {
+    "station_id": "S215",
+    "neighbor_id": "S78",
+    "distance_km": 2.322599073840462
+  },
+  {
+    "station_id": "S215",
+    "neighbor_id": "S36",
+    "distance_km": 2.8332961350991153
+  },
+  {
+    "station_id": "S211",
+    "neighbor_id": "S100",
+    "distance_km": 1.6370551984068051
+  },
+  {
+    "station_id": "S211",
+    "neighbor_id": "S210",
+    "distance_km": 1.7928201521613725
+  },
+  {
+    "station_id": "S211",
+    "neighbor_id": "S66",
+    "distance_km": 2.5439477317724184
+  },
+  {
+    "station_id": "S230",
+    "neighbor_id": "S202",
+    "distance_km": 1.1567843305284164
+  },
+  {
+    "station_id": "S230",
+    "neighbor_id": "S203",
+    "distance_km": 1.2860283872272398
+  },
+  {
+    "station_id": "S230",
+    "neighbor_id": "S71",
+    "distance_km": 2.1638526689615336
+  },
+  {
+    "station_id": "S212",
+    "neighbor_id": "S61",
+    "distance_km": 1.6441792852221748
+  },
+  {
+    "station_id": "S212",
+    "neighbor_id": "S207",
+    "distance_km": 2.616372474530866
+  },
+  {
+    "station_id": "S212",
+    "neighbor_id": "S84",
+    "distance_km": 2.9786496160366633
+  },
+  {
+    "station_id": "S226",
+    "neighbor_id": "S92",
+    "distance_km": 1.994242951662383
+  },
+  {
+    "station_id": "S226",
+    "neighbor_id": "S77",
+    "distance_km": 2.3173814070564154
+  },
+  {
+    "station_id": "S226",
+    "neighbor_id": "S222",
+    "distance_km": 2.767368206912186
+  },
+  {
+    "station_id": "S224",
+    "neighbor_id": "S24",
+    "distance_km": 2.660495780013968
+  },
+  {
+    "station_id": "S224",
+    "neighbor_id": "S24B",
+    "distance_km": 3.072752975649603
+  },
+  {
+    "station_id": "S224",
+    "neighbor_id": "S207",
+    "distance_km": 3.560562907144277
+  },
+  {
+    "station_id": "S222",
+    "neighbor_id": "S77",
+    "distance_km": 1.3095789993545457
+  },
+  {
+    "station_id": "S222",
+    "neighbor_id": "S79",
+    "distance_km": 1.9087365090249713
+  },
+  {
+    "station_id": "S222",
+    "neighbor_id": "S120",
+    "distance_km": 2.189919488946421
+  },
+  {
+    "station_id": "S207",
+    "neighbor_id": "S107",
+    "distance_km": 1.3433572059263272
+  },
+  {
+    "station_id": "S207",
+    "neighbor_id": "S84",
+    "distance_km": 2.607985521568652
+  },
+  {
+    "station_id": "S207",
+    "neighbor_id": "S212",
+    "distance_km": 2.616372474530866
+  },
+  {
+    "station_id": "S218",
+    "neighbor_id": "S64",
+    "distance_km": 2.221030866996379
+  },
+  {
+    "station_id": "S218",
+    "neighbor_id": "S114",
+    "distance_km": 2.8433870538821706
+  },
+  {
+    "station_id": "S218",
+    "neighbor_id": "S103",
+    "distance_km": 2.930902765693471
+  },
+  {
+    "station_id": "S33",
+    "neighbor_id": "S63",
+    "distance_km": 2.251476805932913
+  },
+  {
+    "station_id": "S33",
+    "neighbor_id": "S228",
+    "distance_km": 4.4497865519681605
+  },
+  {
+    "station_id": "S33",
+    "neighbor_id": "S101",
+    "distance_km": 4.733115831291767
+  },
+  {
+    "station_id": "S43",
+    "neighbor_id": "S215",
+    "distance_km": 1.346413229707353
+  },
+  {
+    "station_id": "S43",
+    "neighbor_id": "S221",
+    "distance_km": 1.9221651962489785
+  },
+  {
+    "station_id": "S43",
+    "neighbor_id": "S06",
+    "distance_km": 1.9970811816257348
+  },
+  {
+    "station_id": "S102",
+    "neighbor_id": "S60",
+    "distance_km": 9.505302693012052
+  },
+  {
+    "station_id": "S102",
+    "neighbor_id": "S226",
+    "distance_km": 10.333003530043856
+  },
+  {
+    "station_id": "S102",
+    "neighbor_id": "S116",
+    "distance_km": 10.347647710285953
+  },
+  {
+    "station_id": "S36",
+    "neighbor_id": "S217",
+    "distance_km": 1.786116289804612
+  },
+  {
+    "station_id": "S36",
+    "neighbor_id": "S88",
+    "distance_km": 2.0086999811455204
+  },
+  {
+    "station_id": "S36",
+    "neighbor_id": "S123",
+    "distance_km": 2.068959423276501
+  },
+  {
+    "station_id": "S117",
+    "neighbor_id": "S97",
+    "distance_km": 4.528305554548892
+  },
+  {
+    "station_id": "S117",
+    "neighbor_id": "S33",
+    "distance_km": 6.74076893896539
+  },
+  {
+    "station_id": "S117",
+    "neighbor_id": "S89",
+    "distance_km": 7.3579912589256615
+  },
+  {
+    "station_id": "S61",
+    "neighbor_id": "S212",
+    "distance_km": 1.6441792852221748
+  },
+  {
+    "station_id": "S61",
+    "neighbor_id": "S113",
+    "distance_km": 2.2253802024638563
+  },
+  {
+    "station_id": "S61",
+    "neighbor_id": "S84",
+    "distance_km": 3.4155146461338997
+  },
+  {
+    "station_id": "S118",
+    "neighbor_id": "S79",
+    "distance_km": 0.9956090697107873
+  },
+  {
+    "station_id": "S118",
+    "neighbor_id": "S111",
+    "distance_km": 1.635868605451434
+  },
+  {
+    "station_id": "S118",
+    "neighbor_id": "S119",
+    "distance_km": 2.2862826590564085
+  },
+  {
+    "station_id": "S71",
+    "neighbor_id": "S92",
+    "distance_km": 1.2059627913891342
+  },
+  {
+    "station_id": "S71",
+    "neighbor_id": "S203",
+    "distance_km": 1.2583251691636783
+  },
+  {
+    "station_id": "S71",
+    "neighbor_id": "S230",
+    "distance_km": 2.1638526689615336
+  },
+  {
+    "station_id": "S900",
+    "neighbor_id": "S204",
+    "distance_km": 1.965108253566982
+  },
+  {
+    "station_id": "S900",
+    "neighbor_id": "S209",
+    "distance_km": 2.8745035974445856
+  },
+  {
+    "station_id": "S900",
+    "neighbor_id": "S55",
+    "distance_km": 3.738763574624438
+  },
+  {
+    "station_id": "S121",
+    "neighbor_id": "S114",
+    "distance_km": 1.1545815404516444
+  },
+  {
+    "station_id": "S121",
+    "neighbor_id": "S229",
+    "distance_km": 2.359073325168659
+  },
+  {
+    "station_id": "S121",
+    "neighbor_id": "S101",
+    "distance_km": 2.6806925600586804
+  },
+  {
+    "station_id": "S81",
+    "neighbor_id": "S205",
+    "distance_km": 1.646318465388861
+  },
+  {
+    "station_id": "S81",
+    "neighbor_id": "S220",
+    "distance_km": 2.1952925145947
+  },
+  {
+    "station_id": "S81",
+    "neighbor_id": "S204",
+    "distance_km": 3.0136732320016497
+  },
+  {
+    "station_id": "S77",
+    "neighbor_id": "S223",
+    "distance_km": 1.2913432536103386
+  },
+  {
+    "station_id": "S77",
+    "neighbor_id": "S222",
+    "distance_km": 1.3095789993545457
+  },
+  {
+    "station_id": "S77",
+    "neighbor_id": "S120",
+    "distance_km": 1.7806332142679004
+  },
+  {
+    "station_id": "S44",
+    "neighbor_id": "S228",
+    "distance_km": 2.124097020192831
+  },
+  {
+    "station_id": "S44",
+    "neighbor_id": "S63",
+    "distance_km": 3.2299476117192083
+  },
+  {
+    "station_id": "S44",
+    "neighbor_id": "S11",
+    "distance_km": 3.4720772969812885
+  },
+  {
+    "station_id": "S92",
+    "neighbor_id": "S71",
+    "distance_km": 1.2059627913891342
+  },
+  {
+    "station_id": "S92",
+    "neighbor_id": "S226",
+    "distance_km": 1.994242951662383
+  },
+  {
+    "station_id": "S92",
+    "neighbor_id": "S203",
+    "distance_km": 2.2106283396397046
+  },
+  {
+    "station_id": "S107",
+    "neighbor_id": "S207",
+    "distance_km": 1.3433572059263272
+  },
+  {
+    "station_id": "S107",
+    "neighbor_id": "S212",
+    "distance_km": 3.0232803087799685
+  },
+  {
+    "station_id": "S107",
+    "neighbor_id": "S84",
+    "distance_km": 3.9147466389489494
+  },
+  {
+    "station_id": "S72",
+    "neighbor_id": "S108",
+    "distance_km": 2.542883424115524
+  },
+  {
+    "station_id": "S72",
+    "neighbor_id": "S118",
+    "distance_km": 2.8339827916024642
+  },
+  {
+    "station_id": "S72",
+    "neighbor_id": "S79",
+    "distance_km": 3.1800561963840077
+  },
+  {
+    "station_id": "S216",
+    "neighbor_id": "S217",
+    "distance_km": 1.108019694784057
+  },
+  {
+    "station_id": "S216",
+    "neighbor_id": "S110",
+    "distance_km": 1.8181245244628008
+  },
+  {
+    "station_id": "S216",
+    "neighbor_id": "S109",
+    "distance_km": 1.8605698519283305
+  },
+  {
+    "station_id": "S209",
+    "neighbor_id": "S91",
+    "distance_km": 1.8421699629945716
+  },
+  {
+    "station_id": "S209",
+    "neighbor_id": "S122",
+    "distance_km": 2.2433598575903115
+  },
+  {
+    "station_id": "S209",
+    "neighbor_id": "S900",
+    "distance_km": 2.8745035974445856
+  },
+  {
+    "station_id": "S220",
+    "neighbor_id": "S55",
+    "distance_km": 1.3707171931498312
+  },
+  {
+    "station_id": "S220",
+    "neighbor_id": "S205",
+    "distance_km": 1.5259447912685467
+  },
+  {
+    "station_id": "S220",
+    "neighbor_id": "S81",
+    "distance_km": 2.1952925145947
+  },
+  {
+    "station_id": "S221",
+    "neighbor_id": "S06",
+    "distance_km": 1.2013097874235805
+  },
+  {
+    "station_id": "S221",
+    "neighbor_id": "S43",
+    "distance_km": 1.9221651962489785
+  },
+  {
+    "station_id": "S221",
+    "neighbor_id": "S110",
+    "distance_km": 2.390122369150228
+  },
+  {
+    "station_id": "S205",
+    "neighbor_id": "S220",
+    "distance_km": 1.5259447912685467
+  },
+  {
+    "station_id": "S205",
+    "neighbor_id": "S81",
+    "distance_km": 1.646318465388861
+  },
+  {
+    "station_id": "S205",
+    "neighbor_id": "S29",
+    "distance_km": 2.605150211917961
+  },
+  {
+    "station_id": "S35",
+    "neighbor_id": "S201",
+    "distance_km": 1.6824794438120927
+  },
+  {
+    "station_id": "S35",
+    "neighbor_id": "S50",
+    "distance_km": 2.358372479156534
+  },
+  {
+    "station_id": "S35",
+    "neighbor_id": "S202",
+    "distance_km": 2.5935029614869545
+  },
+  {
+    "station_id": "S60",
+    "neighbor_id": "S72",
+    "distance_km": 3.4949365027320813
+  },
+  {
+    "station_id": "S60",
+    "neighbor_id": "S226",
+    "distance_km": 3.8314336642949267
+  },
+  {
+    "station_id": "S60",
+    "neighbor_id": "S222",
+    "distance_km": 4.458563806189368
+  },
+  {
+    "station_id": "S24",
+    "neighbor_id": "S24B",
+    "distance_km": 1.7119139431487116
+  },
+  {
+    "station_id": "S24",
+    "neighbor_id": "S224",
+    "distance_km": 2.660495780013968
+  },
+  {
+    "station_id": "S24",
+    "neighbor_id": "S94",
+    "distance_km": 3.317439824715188
+  },
+  {
+    "station_id": "S64",
+    "neighbor_id": "S218",
+    "distance_km": 2.221030866996379
+  },
+  {
+    "station_id": "S64",
+    "neighbor_id": "S103",
+    "distance_km": 2.76267332236419
+  },
+  {
+    "station_id": "S64",
+    "neighbor_id": "S114",
+    "distance_km": 3.378782917873182
+  },
+  {
+    "station_id": "S97",
+    "neighbor_id": "S89",
+    "distance_km": 2.899440447058292
+  },
+  {
+    "station_id": "S97",
+    "neighbor_id": "S117",
+    "distance_km": 4.528305554548892
+  },
+  {
+    "station_id": "S97",
+    "neighbor_id": "S82",
+    "distance_km": 4.701953175252693
+  },
+  {
+    "station_id": "S89",
+    "neighbor_id": "S97",
+    "distance_km": 2.899440447058292
+  },
+  {
+    "station_id": "S89",
+    "neighbor_id": "S82",
+    "distance_km": 2.9970248451821075
+  },
+  {
+    "station_id": "S89",
+    "neighbor_id": "S44",
+    "distance_km": 3.6480489979860686
+  },
+  {
+    "station_id": "S24B",
+    "neighbor_id": "S24",
+    "distance_km": 1.7119139431487116
+  },
+  {
+    "station_id": "S24B",
+    "neighbor_id": "S224",
+    "distance_km": 3.072752975649603
+  },
+  {
+    "station_id": "S24B",
+    "neighbor_id": "S94",
+    "distance_km": 5.027729053479976
+  },
+  {
+    "station_id": "S08",
+    "neighbor_id": "S69",
+    "distance_km": 2.4567305305096077
+  },
+  {
+    "station_id": "S08",
+    "neighbor_id": "S109",
+    "distance_km": 2.554628082484267
+  },
+  {
+    "station_id": "S08",
+    "neighbor_id": "S216",
+    "distance_km": 3.119170304075282
+  },
+  {
+    "station_id": "S90",
+    "neighbor_id": "S120",
+    "distance_km": 1.158451371908577
+  },
+  {
+    "station_id": "S90",
+    "neighbor_id": "S213",
+    "distance_km": 1.192649901826609
+  },
+  {
+    "station_id": "S90",
+    "neighbor_id": "S111",
+    "distance_km": 2.1552981512612592
+  },
+  {
+    "station_id": "S63",
+    "neighbor_id": "S228",
+    "distance_km": 2.20562989993098
+  },
+  {
+    "station_id": "S63",
+    "neighbor_id": "S33",
+    "distance_km": 2.251476805932913
+  },
+  {
+    "station_id": "S63",
+    "neighbor_id": "S101",
+    "distance_km": 2.7574877396395117
+  },
+  {
+    "station_id": "S06",
+    "neighbor_id": "S221",
+    "distance_km": 1.2013097874235805
+  },
+  {
+    "station_id": "S06",
+    "neighbor_id": "S43",
+    "distance_km": 1.9970811816257348
+  },
+  {
+    "station_id": "S06",
+    "neighbor_id": "S215",
+    "distance_km": 3.0243212966894246
+  },
+  {
+    "station_id": "S29",
+    "neighbor_id": "S205",
+    "distance_km": 2.605150211917961
+  },
+  {
+    "station_id": "S29",
+    "neighbor_id": "S94",
+    "distance_km": 3.043771232996099
+  },
+  {
+    "station_id": "S29",
+    "neighbor_id": "S81",
+    "distance_km": 3.3691430004839624
+  },
+  {
+    "station_id": "S78",
+    "neighbor_id": "S214",
+    "distance_km": 1.2343312910517832
+  },
+  {
+    "station_id": "S78",
+    "neighbor_id": "S113",
+    "distance_km": 2.1941578115001965
+  },
+  {
+    "station_id": "S78",
+    "neighbor_id": "S215",
+    "distance_km": 2.322599073840462
+  },
+  {
+    "station_id": "S94",
+    "neighbor_id": "S84",
+    "distance_km": 2.670462660135166
+  },
+  {
+    "station_id": "S94",
+    "neighbor_id": "S29",
+    "distance_km": 3.043771232996099
+  },
+  {
+    "station_id": "S94",
+    "neighbor_id": "S24",
+    "distance_km": 3.317439824715188
+  },
+  {
+    "station_id": "S40",
+    "neighbor_id": "S64",
+    "distance_km": 4.075190231746563
+  },
+  {
+    "station_id": "S40",
+    "neighbor_id": "S122",
+    "distance_km": 4.176242148606741
+  },
+  {
+    "station_id": "S40",
+    "neighbor_id": "S69",
+    "distance_km": 4.189800285916874
+  },
+  {
+    "station_id": "S110",
+    "neighbor_id": "S216",
+    "distance_km": 1.8181245244628008
+  },
+  {
+    "station_id": "S110",
+    "neighbor_id": "S217",
+    "distance_km": 1.9654687495202985
+  },
+  {
+    "station_id": "S110",
+    "neighbor_id": "S219",
+    "distance_km": 2.2811264462294885
+  },
+  {
+    "station_id": "S115",
+    "neighbor_id": "S82",
+    "distance_km": 3.9067395870126798
+  },
+  {
+    "station_id": "S115",
+    "neighbor_id": "S97",
+    "distance_km": 5.073660126100719
+  },
+  {
+    "station_id": "S115",
+    "neighbor_id": "S89",
+    "distance_km": 5.60908944741151
+  },
+  {
+    "station_id": "S109",
+    "neighbor_id": "S216",
+    "distance_km": 1.8605698519283305
+  },
+  {
+    "station_id": "S109",
+    "neighbor_id": "S08",
+    "distance_km": 2.554628082484267
+  },
+  {
+    "station_id": "S109",
+    "neighbor_id": "S110",
+    "distance_km": 2.8767792922629987
+  },
+  {
+    "station_id": "S88",
+    "neighbor_id": "S217",
+    "distance_km": 1.162293790944303
+  },
+  {
+    "station_id": "S88",
+    "neighbor_id": "S07",
+    "distance_km": 1.6506355506415689
+  },
+  {
+    "station_id": "S88",
+    "neighbor_id": "S36",
+    "distance_km": 2.0086999811455204
+  },
+  {
+    "station_id": "S55",
+    "neighbor_id": "S219",
+    "distance_km": 1.1410124157086439
+  },
+  {
+    "station_id": "S55",
+    "neighbor_id": "S220",
+    "distance_km": 1.3707171931498312
+  },
+  {
+    "station_id": "S55",
+    "neighbor_id": "S204",
+    "distance_km": 1.9496004713018908
+  },
+  {
+    "station_id": "S106",
+    "neighbor_id": "S29",
+    "distance_km": 4.885882190846087
+  },
+  {
+    "station_id": "S106",
+    "neighbor_id": "S24",
+    "distance_km": 5.7078336683108795
+  },
+  {
+    "station_id": "S106",
+    "neighbor_id": "S94",
+    "distance_km": 5.85279014687347
+  },
+  {
+    "station_id": "S105",
+    "neighbor_id": "S104",
+    "distance_km": 1.9318640390431034
+  },
+  {
+    "station_id": "S105",
+    "neighbor_id": "S227",
+    "distance_km": 2.293460469685568
+  },
+  {
+    "station_id": "S105",
+    "neighbor_id": "S210",
+    "distance_km": 3.543585983647687
+  },
+  {
+    "station_id": "S227",
+    "neighbor_id": "S104",
+    "distance_km": 2.1157099637974413
+  },
+  {
+    "station_id": "S227",
+    "neighbor_id": "S105",
+    "distance_km": 2.293460469685568
+  },
+  {
+    "station_id": "S227",
+    "neighbor_id": "S91",
+    "distance_km": 3.1664787329170436
+  },
+  {
+    "station_id": "S217",
+    "neighbor_id": "S216",
+    "distance_km": 1.108019694784057
+  },
+  {
+    "station_id": "S217",
+    "neighbor_id": "S88",
+    "distance_km": 1.162293790944303
+  },
+  {
+    "station_id": "S217",
+    "neighbor_id": "S36",
+    "distance_km": 1.786116289804612
+  },
+  {
+    "station_id": "S204",
+    "neighbor_id": "S55",
+    "distance_km": 1.9496004713018908
+  },
+  {
+    "station_id": "S204",
+    "neighbor_id": "S900",
+    "distance_km": 1.965108253566982
+  },
+  {
+    "station_id": "S204",
+    "neighbor_id": "S220",
+    "distance_km": 2.3580530332536616
+  },
+  {
+    "station_id": "S213",
+    "neighbor_id": "S90",
+    "distance_km": 1.192649901826609
+  },
+  {
+    "station_id": "S213",
+    "neighbor_id": "S46",
+    "distance_km": 1.9296035366370048
+  },
+  {
+    "station_id": "S213",
+    "neighbor_id": "S120",
+    "distance_km": 1.9578977580723804
+  },
+  {
+    "station_id": "S223",
+    "neighbor_id": "S77",
+    "distance_km": 1.2913432536103386
+  },
+  {
+    "station_id": "S223",
+    "neighbor_id": "S120",
+    "distance_km": 1.973568554081807
+  },
+  {
+    "station_id": "S223",
+    "neighbor_id": "S92",
+    "distance_km": 2.3450506157736632
+  },
+  {
+    "station_id": "S201",
+    "neighbor_id": "S50",
+    "distance_km": 1.5936740972840906
+  },
+  {
+    "station_id": "S201",
+    "neighbor_id": "S35",
+    "distance_km": 1.6824794438120927
+  },
+  {
+    "station_id": "S201",
+    "neighbor_id": "S202",
+    "distance_km": 1.8188256448133522
+  },
+  {
+    "station_id": "S210",
+    "neighbor_id": "S211",
+    "distance_km": 1.7928201521613725
+  },
+  {
+    "station_id": "S210",
+    "neighbor_id": "S104",
+    "distance_km": 1.8658632261047448
+  },
+  {
+    "station_id": "S210",
+    "neighbor_id": "S100",
+    "distance_km": 3.4106006031473286
+  },
+  {
+    "station_id": "S228",
+    "neighbor_id": "S101",
+    "distance_km": 1.461229777182079
+  },
+  {
+    "station_id": "S228",
+    "neighbor_id": "S44",
+    "distance_km": 2.124097020192831
+  },
+  {
+    "station_id": "S228",
+    "neighbor_id": "S63",
+    "distance_km": 2.20562989993098
+  }
+]
