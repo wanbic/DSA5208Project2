@@ -9,6 +9,7 @@ predict whether rainfall at a station will exceed a threshold in the next
 - `preprocess.py`: shared data loading and cleaning functions.
 - `task1.py`: Task 1 rainfall pattern analysis.
 - `task2.py`: final Task 2 training script.
+- `inference.py`: load a trained final model and run one prediction.
 - `rainfall_model.py`: final GBT model with neighbor rainfall.
 - `model_evaluation.py`: shared evaluation and plotting functions.
 - `task2_logistic.py` and `logistic_model.py`: logistic baseline.
@@ -144,8 +145,27 @@ The main model options are:
   cluster Spark settings.
 - `--run-name`: optional output directory name.
 
-Each run creates a new directory under `models/` containing the model,
+Each run creates a new directory under `models/` containing the model JSON,
 parameters, station-neighbor mapping, metrics, and figures.
+
+### Inference
+
+Predict one station/time/threshold from an existing final-model run with:
+
+```powershell
+python inference.py `
+  --model-run models/final_gbt_run_20261017_184044 `
+  --station-id S06 `
+  --prediction-time "2024-11-13 16:30:00" `
+  --threshold-mm 1.0
+```
+
+The script evaluates the trees stored in `model.json`, so it does not require a
+native Hadoop model directory. It loads the relevant annual CSV and
+automatically constructs current rainfall, 15- and 30-minute rainfall history,
+and mean neighbor rainfall. The prediction time is Singapore local time and
+must fall exactly on minute 00 or 30, with complete five-minute readings from
+that time through 25 minutes earlier.
 
 ## Rainfall-history ablation
 
@@ -240,3 +260,15 @@ The current report results are backed by these run directories:
 Generated model directories, figures, tables, and raw rainfall CSV files are
 excluded from Git. Include the six run directories above separately if saved
 metrics and fitted-model artifacts must accompany the submission.
+
+## Submission checklist
+
+- Replace the member-name and student-ID placeholders near the top of
+  `report.tex`, then compile the final `report.pdf`.
+- Submit the complete source code, `README.md`, and `requirements.txt`.
+- Submit the six saved run directories listed above if the experimental
+  artifacts are required.
+- Submit `model.json` and `neighbor_mapping.json` from the selected final run;
+  these are the fitted-model artifacts used by `inference.py`.
+- Do not include the multi-gigabyte rainfall CSV files unless Canvas explicitly
+  requests them; they can be obtained with `download_dataset.py`.

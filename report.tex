@@ -3,8 +3,48 @@
 \usepackage{graphicx}
 \usepackage{booktabs}
 \usepackage{tabularx}
+\usepackage[hidelinks]{hyperref}
+
+\title{Spatiotemporal Analysis and Short-Term Probability Prediction\\
+of Rainfall in Singapore, 2017--2024}
+\author{
+\textbf{xxx} --- A0123456R}
+\date{October 2026}
 
 \begin{document}
+
+\maketitle
+
+\begin{abstract}
+This project uses Apache Spark to analyse five-minute rainfall observations
+from monitoring stations across Singapore between 2017 and 2024 and to predict
+whether rainfall accumulated over the next 30 minutes will exceed a specified
+threshold. After coverage-based quality filtering, the exploratory analysis
+found substantial variation across years, months, hours, and stations. The
+wettest estimated year was 2022, the driest was 2019, November had the highest
+mean daily rainfall, and rainfall peaked in the afternoon. For prediction, we
+used a temporally separated training, validation, and test design and compared
+logistic regression with gradient-boosted trees. Adding current rainfall from
+nearby stations and retaining 15- and 30-minute rainfall histories improved
+performance. The selected GBT achieved test PR--AUC 0.6281, ROC--AUC 0.9181,
+and mean threshold-specific Brier score 0.01716. Feature ablations further
+showed that recent rainfall history materially improved performance, whereas
+cyclic month and hour features mainly improved ROC--AUC.
+\end{abstract}
+
+\section{Introduction}
+
+The Historical Rainfall across Singapore collection from
+\href{https://data.gov.sg/collections/2279/view}{data.gov.sg} provides rainfall
+measurements at five-minute intervals together with observation times and
+monitoring-station information. We used the eight annual datasets from 2017
+through 2024. The project has two objectives. Task 1 investigates temporal and
+spatial rainfall patterns and how they change within and between years. Task 2
+develops a Spark MLlib model that estimates the probability that a station
+will accumulate more than a user-specified amount of rainfall during the next
+30 minutes. The remainder of the report describes data cleaning, the computing
+environment, exploratory results, model development, evaluation, ablation
+experiments, limitations, and conclusions.
 
 \section{Data Preprocessing and Missing-Value Handling}
 
@@ -522,5 +562,100 @@ probability. The tested defaults are 20 trees, maximum depth 4, learning rate 0.
 subsampling rate 0.8, three nearest stations, and the $1/16$ training sample.
 All settings can be changed through the command-line options in
 \texttt{task2.py}.
+
+\section{Reproducibility and Inference}
+
+The complete reproduction instructions, tested package versions, and command-
+line options are provided in \texttt{README.md}. After placing
+\texttt{rainfall\_2017.csv} through \texttt{rainfall\_2024.csv} in the
+\texttt{data/} directory, Task~1 and the main Task~2 experiments can be run
+with \texttt{python task1.py} and \texttt{python task2.py}. The logistic and
+GBT baselines and the rainfall-history and time-feature ablations have separate
+entry scripts listed in the README. Fixed sampling rules, data splits, model
+settings, and random seeds are recorded there and in each saved run directory.
+
+For a single prediction, \texttt{inference.py} accepts a saved model run,
+station ID, Singapore-local prediction time, and rainfall threshold. For
+example:
+
+\begin{verbatim}
+python inference.py --model-run models/final_gbt_run_20261017_184044 \
+  --station-id S06 --prediction-time "2024-11-13 16:30:00" \
+  --threshold-mm 1.0
+\end{verbatim}
+
+The script obtains the current, 15-minute, 30-minute, and neighboring-station
+rainfall features from the annual CSV file and evaluates the fitted trees in
+\texttt{model.json}. The project repository is available at
+\href{https://github.com/wanbic/DSA5208Project2}{github.com/wanbic/DSA5208Project2}.
+The complete source code and fitted model files are also submitted on Canvas
+together with this report.
+
+\section{Limitations and Future Work}
+
+The analysis has several limitations. First, coverage adjustment assumes that
+missing intervals and dates resemble the observed periods. This assumption may
+be inaccurate if monitoring failures are related to severe weather. Station
+availability also changed over the eight years, and station ID is only an
+indirect representation of location. Second, the prediction experiments used
+a deterministic sample and prediction times at the start and middle of each
+hour to fit within local computing and disk constraints. Training on every
+eligible five-minute time point and a larger fraction of the data could reveal
+smaller improvements that the present experiments cannot detect.
+
+Third, 2023 was used for model selection and 2024 for final testing, providing
+a realistic time split but only one validation year and one test year. Rolling
+year-based evaluation or blocked temporal cross-validation would better measure
+variation across wet and dry years. Positive events were especially rare at
+the 5 and 10~mm thresholds, where PR--AUC remained substantially lower and
+differences between models were inconsistent. Threshold-specific calibration,
+class weighting, resampling, and uncertainty intervals would make the
+evaluation more informative for these rare heavy-rain events.
+
+The neighbor feature can also be improved. Missing neighbor readings are
+currently filled with zero, which can conflate unavailable data with observed
+zero rainfall. Future models should add a neighbor-availability indicator,
+use distance-weighted rainfall, test different neighbor counts, and consider
+short histories from neighboring stations. Coordinates or spatial embeddings
+could replace or complement one-hot station ID, particularly for new stations.
+More systematic tuning of tree depth, tree count, learning rate, and sampling
+rate should be performed using only the training and validation periods.
+
+Finally, the fitted GBT is stored as a compact JSON export containing the
+station encoding, feature order, tree weights, and tree structures. The
+inference script evaluates this export directly and reproduces the Spark
+probability calculation, avoiding platform-specific Hadoop model-loading
+requirements. A production deployment should nevertheless use a formally
+versioned model format, validate the feature schema, and store checksums for
+the model and input data. Running the workflow on a larger cluster would make
+full-data training and multi-seed robustness checks practical.
+
+\section{Conclusion}
+
+Task 1 showed that Singapore rainfall varied meaningfully across time and
+space. The coverage-adjusted annual estimate ranged from about 1,727~mm in
+2019 to 2,929~mm in 2022. November was the wettest calendar month on average,
+and both mean rainfall and wet-hour probability peaked near 15:00. Mean daily
+rainfall also differed substantially between monitoring stations, supporting
+the use of temporal and spatial predictors.
+
+For Task 2, gradient-boosted trees clearly outperformed the logistic baseline.
+Adding rainfall from the three nearest stations raised test PR--AUC from
+0.5949 to 0.6281 and test ROC--AUC from 0.9094 to 0.9181, while lowering mean
+Brier score from 0.01798 to 0.01716. Removing both recent-history totals caused
+the largest ablation loss, confirming that rainfall persistence is important
+for 30-minute prediction. Cyclic month and hour features had little effect on
+aggregate PR--AUC but improved ROC--AUC relative to removing time information
+or using raw numeric time. The selected model therefore combines current and
+recent rainfall, neighbor rainfall, station identity, cyclic time features,
+and the requested threshold. Its results demonstrate useful short-term
+predictive skill while leaving clear opportunities for stronger rare-event
+modelling, calibration, spatial representation, and full-data training.
+
+\section{AI Usage Declaration}
+
+OpenAI ChatGPT/Codex was used to assist with code organisation, debugging,
+plotting utilities, reproducibility documentation, drafting and editing of the
+report.
 
 \end{document}
