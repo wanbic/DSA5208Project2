@@ -15,6 +15,84 @@ predict whether rainfall at a station will exceed a threshold in the next
 - `task2_gbt_baseline.py` and `gbt_baseline_model.py`: GBT baseline without
   neighbor rainfall.
 - `plot_model_comparison.py`: plot the preliminary model comparison.
+- `task2_history_ablation.py` and `history_ablation_model.py`: remove the
+  30-minute history feature, then remove both 15- and 30-minute history.
+- `plot_history_ablation_comparison.py`: recreate the threshold-level history
+  ablation comparison from saved results.
+- `requirements.txt`: tested Python package versions.
+
+## Environment
+
+The experiments were tested with Python 3.10.22, Java 17, and the package
+versions in `requirements.txt`. For example, create an environment and install
+the dependencies with:
+
+```powershell
+conda create -n dsa5208proj2 python=3.10.22
+conda activate dsa5208proj2
+python -m pip install -r requirements.txt
+```
+
+Java 17 must also be installed and available through `PATH` or `JAVA_HOME`.
+
+## Data
+
+Place `rainfall_2017.csv` through `rainfall_2024.csv` in `data/`. They can be
+downloaded from data.gov.sg with:
+
+```powershell
+python download_dataset.py
+```
+
+The raw CSV files are excluded from Git because they are large. Exact numeric
+reproduction requires the same source files used for the saved runs.
+
+## Reproducing the report experiments
+
+All commands below are run from the project root in the configured
+environment.
+
+### Task 1 rainfall patterns
+
+Generate the annual, monthly, year-month, hourly, and station summaries and
+figures with:
+
+```powershell
+python task1.py
+```
+
+This writes the underlying CSV summaries to `tables/` and plots to `figures/`.
+
+### Preliminary Task 2 models
+
+Train the logistic baseline using one quarter of eligible station-time
+examples:
+
+```powershell
+python task2_logistic.py
+```
+
+Train the GBT baseline using the selected 1/16 training sample:
+
+```powershell
+python task2_gbt_baseline.py
+```
+
+The earlier 1/64 GBT uses the same script with a different training modulus:
+
+```powershell
+python -c "import task2_gbt_baseline as t; t.TRAIN_SAMPLE_MODULUS=64; t.main()"
+```
+
+The preliminary comparison figure can be recreated from the three saved runs
+listed in `plot_model_comparison.py`:
+
+```powershell
+python plot_model_comparison.py
+```
+
+If the models have been retrained under new timestamped directory names,
+update the `RUNS` paths in that plotting script first.
 
 ## Final model
 
@@ -67,17 +145,63 @@ The main model options are:
 Each run creates a new directory under `models/` containing the model,
 parameters, station-neighbor mapping, metrics, and figures.
 
-## Baselines
+## Rainfall-history ablation
 
-Run the earlier models with:
+Run both history-feature ablations with the tested final-model settings:
 
-```bash
-python task2_logistic.py
-python task2_gbt_baseline.py
+```powershell
+python task2_history_ablation.py
 ```
 
-## Data
+This trains two models on the same examples:
 
-Place `rainfall_2017.csv` through `rainfall_2024.csv` in `data/`. The raw CSV
-files and generated model directories are excluded from Git because they are
-large.
+- `remove_30min`: retains current rainfall and the 15-minute history total.
+- `remove_15min_30min`: retains current rainfall but removes both history
+  totals.
+
+The run directory contains each model's metrics and threshold plot, an overall
+metric comparison, and `history_ablation_threshold_comparison_test.png`, which
+compares PR-AUC, ROC-AUC, and Brier score across all seven thresholds for the
+full model and both ablations.
+
+To recreate only the threshold-level figure from an existing run:
+
+```powershell
+python plot_history_ablation_comparison.py `
+  models/history_ablation_run_20261017_190306
+```
+
+### Build the report
+
+Copy the final neighbor-ablation figure and history-ablation figure used by the
+current report:
+
+```powershell
+Copy-Item `
+  models/final_gbt_run_20261017_184044/baseline_comparison.png `
+  figures/final_model_comparison.png
+Copy-Item `
+  models/history_ablation_run_20261017_190306/history_ablation_threshold_comparison_test.png `
+  figures/history_ablation.png
+```
+
+Then compile the LaTeX report twice so that references are resolved:
+
+```powershell
+pdflatex -interaction=nonstopmode report.tex
+pdflatex -interaction=nonstopmode report.tex
+```
+
+## Saved runs used by the current report
+
+The current report results are backed by these run directories:
+
+- `models/logistic_run_20261015_200027`
+- `models/gbt_run_20261016_163426`
+- `models/gbt_run_20261015_213401`
+- `models/final_gbt_run_20261017_184044`
+- `models/history_ablation_run_20261017_190306`
+
+Generated model directories, figures, tables, and raw rainfall CSV files are
+excluded from Git. Include the five run directories above separately if saved
+metrics and fitted-model artifacts must accompany the submission.

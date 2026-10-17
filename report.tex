@@ -221,6 +221,16 @@ one-hot encoded. Month and hour were converted to sine and cosine pairs to
 represent their cyclic patterns. These features describe recent rain as well
 as the time and location patterns found in Task 1.
 
+The features were selected to represent the main factors that are available at
+prediction time and are likely to affect short-term rainfall. Current and
+recent rainfall capture the persistence, intensity, and duration of an ongoing
+rain event. Station ID represents the spatial differences observed in Task 1,
+while month and hour represent the seasonal and daily rainfall patterns. Their
+cyclic encoding also keeps December close to January and 23:00 close to 00:00.
+Finally, including the requested threshold allows one model to return
+probabilities for different rainfall amounts instead of training a separate
+model for every threshold.
+
 Logistic regression was the baseline. We also trained a gradient-boosted tree
 (GBT) model with 20 trees, depth 4, learning rate 0.1, subsampling rate 0.8,
 and seed 5208. Two GBT training sizes were tested with the same features and
@@ -313,13 +323,13 @@ the local disk did not have enough free space for a larger GBT run. We therefore
 chose the $1/16$ model as the largest practical model with a small but measurable
 PR--AUC improvement.
 
-This is only the starting GBT model, not the final model. Later experiments
-will remove one feature group at a time, including station ID, recent rainfall,
-cyclic time features, and threshold. We will also test tree depth, number of
-trees, subsampling, training size, and methods for class imbalance at high
-thresholds.
+This is only the starting GBT model, not the final model. The following
+experiments test the contribution of neighbor rainfall and recent rainfall
+history while keeping the training sample and GBT settings fixed. Other
+feature groups, hyperparameters, and methods for class imbalance at high
+thresholds remain possible directions for further work.
 
-\subsection{Neighbor rainfall and final model}
+\subsection{Neighbor rainfall}
 
 The next experiment added one spatial feature: the mean current rainfall at
 the three nearest monitoring stations. Nearest stations were found from their
@@ -336,11 +346,6 @@ to 0.01716. PR--AUC also increased at every individual threshold, as shown in
 Figure~\ref{fig:neighbor-ablation}. The neighbor feature had a GBT importance
 of 0.329, the highest importance of any single feature. This supports the Task
 1 finding that rainfall has a spatial pattern.
-
-The GBT with neighbor rainfall was therefore selected as the final model.
-Its tested defaults are 20 trees, depth 4, learning rate 0.1, subsampling
-rate 0.8, three neighbors, and the $1/16$ training sample. All can be changed
-through the command-line options in \texttt{task2.py}.
 
 \begin{table}[htbp]
     \centering
@@ -366,5 +371,101 @@ through the command-line options in \texttt{task2.py}.
     \caption{Test performance before and after adding neighbor rainfall.}
     \label{fig:neighbor-ablation}
 \end{figure}
+
+\subsection{Rainfall-history ablation}
+
+We next tested whether both rainfall-history windows were useful after adding
+neighbor rainfall. The first ablation removed only the 30-minute rainfall
+total and retained current rainfall and the 15-minute total. The second
+removed both the 15- and 30-minute totals but retained current rainfall. The
+same station--time examples, thresholds, neighbor mapping, temporal split,
+training sample, and GBT settings were used in all three configurations.
+
+Table~\ref{tab:history-ablation} shows that the full model had the best overall
+validation and test results. Removing the 30-minute total reduced test
+PR--AUC from 0.6281 to 0.6209 and test ROC--AUC from 0.9181 to 0.9154, while
+mean test Brier score increased from 0.01716 to 0.01726. Removing both history
+totals caused a larger decline: test PR--AUC fell to 0.6028, test ROC--AUC to
+0.9083, and mean test Brier score rose to 0.01760. Thus the 15-minute history
+provided the larger contribution, while the 30-minute history still added a
+smaller improvement beyond it.
+
+\begin{table}[htbp]
+    \centering
+    \caption{Ablation results for the recent rainfall-history features.}
+    \label{tab:history-ablation}
+    \small
+    \begin{tabular}{@{}lrrrrrr@{}}
+        \toprule
+        History features & Val. PR & Val. ROC & Val. Brier
+                         & Test PR & Test ROC & Test Brier \\
+        \midrule
+        15- and 30-minute & 0.6433 & 0.9240 & 0.01769
+                         & 0.6281 & 0.9181 & 0.01716 \\
+        15-minute only   & 0.6366 & 0.9214 & 0.01781
+                         & 0.6209 & 0.9154 & 0.01726 \\
+        No history total & 0.6200 & 0.9145 & 0.01817
+                         & 0.6028 & 0.9083 & 0.01760 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+Figure~\ref{fig:history-ablation} compares the three test metrics separately
+at each threshold. The benefit of rainfall history is clearest at the lower
+thresholds, especially for ROC--AUC. Differences in PR--AUC and Brier score
+are much smaller for the rare 5 and 10~mm events, so the threshold-specific
+ordering is not uniform at those extremes. The aggregate results nevertheless
+support retaining both history windows.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{figures/history_ablation.png}
+    \caption{Test PR--AUC, ROC--AUC, and Brier score by threshold for the full
+    model and the two rainfall-history ablations.}
+    \label{fig:history-ablation}
+\end{figure}
+
+\subsection{Final model}
+
+The final model is the GBT with neighbor rainfall because it gave the best
+PR--AUC, ROC--AUC, and Brier score in both the neighbor and rainfall-history
+ablation experiments. It estimates
+the probability that a station will accumulate more than the user-supplied
+rainfall threshold during the next 30 minutes. Table~\ref{tab:final-features}
+lists all model inputs. Rainfall history and neighbor readings use only
+information available at or before the prediction time.
+
+\begin{table}[htbp]
+    \centering
+    \caption{Input features used by the final model.}
+    \label{tab:final-features}
+    \small
+    \begin{tabularx}{\textwidth}{@{}lX@{}}
+        \toprule
+        Feature & Description \\
+        \midrule
+        Station ID & Categorical station identifier, converted to a one-hot
+        encoded vector. \\
+        Rainfall threshold & User-supplied amount in mm that the next
+        30-minute rainfall should exceed. \\
+        Current rainfall & Rainfall recorded at the target station at the
+        prediction time. \\
+        Recent 15-minute rainfall & Total rainfall at the target station over
+        the previous 15 minutes. \\
+        Recent 30-minute rainfall & Total rainfall at the target station over
+        the previous 30 minutes. \\
+        Neighbor rainfall & Mean current rainfall at the three nearest
+        stations with readings available at the prediction time. \\
+        Month sine and cosine & Cyclic encoding of the calendar month. \\
+        Hour sine and cosine & Cyclic encoding of the hour of day. \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+The GBT combines several shallow decision trees and returns the positive-class
+probability. The tested defaults are 20 trees, maximum depth 4, learning rate 0.1,
+subsampling rate 0.8, three nearest stations, and the $1/16$ training sample.
+All settings can be changed through the command-line options in
+\texttt{task2.py}.
 
 \end{document}
