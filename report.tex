@@ -425,11 +425,66 @@ support retaining both history windows.
     \label{fig:history-ablation}
 \end{figure}
 
+\subsection{Month and hour ablation}
+
+The final feature ablation examined the month and hour representation. One
+variant removed the four cyclic time features completely. A second replaced
+the sine and cosine pairs with the raw numeric month and hour. All other
+features, examples, data splits, and GBT settings were unchanged. This tests
+both whether calendar time contributes useful information and whether cyclic
+encoding is preferable to treating month and hour as ordinary numbers.
+
+Table~\ref{tab:time-ablation} shows that PR--AUC was almost unchanged. Removing
+time features increased test PR--AUC by only 0.00004, from 0.62808 to 0.62811,
+while the raw numeric representation produced 0.62798. The clearer difference
+was in ROC--AUC: the full cyclic model achieved 0.9181 on the test set,
+compared with 0.9116 without time features and 0.9082 with non-cyclic time.
+The full model also had the lowest mean test Brier score, although the
+differences were small. These results suggest that cyclic time features add
+ranking information that is not fully reflected by aggregate PR--AUC.
+
+\begin{table}[htbp]
+    \centering
+    \caption{Ablation results for the month and hour representation.}
+    \label{tab:time-ablation}
+    \small
+    \begin{tabular}{@{}lrrrrrr@{}}
+        \toprule
+        Time features & Val. PR & Val. ROC & Val. Brier
+                      & Test PR & Test ROC & Test Brier \\
+        \midrule
+        Cyclic month/hour & 0.6433 & 0.9240 & 0.01769
+                          & 0.6281 & 0.9181 & 0.01716 \\
+        No month/hour     & 0.6444 & 0.9166 & 0.01770
+                          & 0.6281 & 0.9116 & 0.01718 \\
+        Numeric month/hour & 0.6433 & 0.9161 & 0.01771
+                           & 0.6280 & 0.9082 & 0.01718 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+Figure~\ref{fig:time-ablation} gives the threshold-specific test results. The
+cyclic model had the strongest ROC--AUC across the thresholds, while PR--AUC
+differences were smaller and their ordering varied. Brier scores were also
+very close, particularly for the rare high-threshold events. We therefore
+retained cyclic month and hour features for their more consistent overall
+ranking performance.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{figures/time_ablation.png}
+    \caption{Test PR--AUC, ROC--AUC, and Brier score by threshold for cyclic,
+    omitted, and non-cyclic month and hour features.}
+    \label{fig:time-ablation}
+\end{figure}
+
 \subsection{Final model}
 
-The final model is the GBT with neighbor rainfall because it gave the best
-PR--AUC, ROC--AUC, and Brier score in both the neighbor and rainfall-history
-ablation experiments. It estimates
+The final model is the GBT with neighbor rainfall and both rainfall-history
+windows because it gave the best PR--AUC, ROC--AUC, and Brier score in those
+two ablation experiments. Cyclic month and hour features were retained because
+they gave substantially better ROC--AUC and the lowest mean Brier score in the
+time-feature ablation, while PR--AUC was effectively unchanged. The model estimates
 the probability that a station will accumulate more than the user-supplied
 rainfall threshold during the next 30 minutes. Table~\ref{tab:final-features}
 lists all model inputs. Rainfall history and neighbor readings use only

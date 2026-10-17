@@ -17,6 +17,8 @@ predict whether rainfall at a station will exceed a threshold in the next
 - `plot_model_comparison.py`: plot the preliminary model comparison.
 - `task2_history_ablation.py` and `history_ablation_model.py`: remove the
   30-minute history feature, then remove both 15- and 30-minute history.
+- `task2_time_ablation.py` and `time_ablation_model.py`: remove month/hour
+  features or replace their cyclic encoding with raw numeric values.
 - `plot_history_ablation_comparison.py`: recreate the threshold-level history
   ablation comparison from saved results.
 - `requirements.txt`: tested Python package versions.
@@ -171,7 +173,36 @@ python plot_history_ablation_comparison.py `
   models/history_ablation_run_20261017_190306
 ```
 
-### Build the report
+## Month/hour feature ablation
+
+Run both time-feature ablations with:
+
+```powershell
+python task2_time_ablation.py
+```
+
+The two variants remove all month/hour inputs or replace the month/hour sine
+and cosine pairs with raw numeric month and hour. The run automatically saves
+an overall comparison and a three-panel threshold comparison against the full
+cyclic-time model.
+
+The report uses `models/time_ablation_run_20261017_194655`. Its main output
+files are:
+
+```text
+time_ablation.png
+time_ablation_threshold_comparison_test.png
+comparison_results.json
+remove_time/
+noncyclic_time/
+```
+
+The full cyclic model, no-time model, and numeric-time model obtained test
+ROC-AUC values of 0.9181, 0.9116, and 0.9082 respectively. Their test PR-AUC
+values were nearly identical at 0.6281, while the full cyclic model had the
+lowest mean test Brier score.
+
+## Build the report
 
 Copy the final neighbor-ablation figure and history-ablation figure used by the
 current report:
@@ -183,6 +214,9 @@ Copy-Item `
 Copy-Item `
   models/history_ablation_run_20261017_190306/history_ablation_threshold_comparison_test.png `
   figures/history_ablation.png
+Copy-Item `
+  models/time_ablation_run_20261017_194655/time_ablation_threshold_comparison_test.png `
+  figures/time_ablation.png
 ```
 
 Then compile the LaTeX report twice so that references are resolved:
@@ -201,7 +235,8 @@ The current report results are backed by these run directories:
 - `models/gbt_run_20261015_213401`
 - `models/final_gbt_run_20261017_184044`
 - `models/history_ablation_run_20261017_190306`
+- `models/time_ablation_run_20261017_194655`
 
 Generated model directories, figures, tables, and raw rainfall CSV files are
-excluded from Git. Include the five run directories above separately if saved
+excluded from Git. Include the six run directories above separately if saved
 metrics and fitted-model artifacts must accompany the submission.
